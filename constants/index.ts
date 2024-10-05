@@ -1,3 +1,6 @@
+import {Calendar, MapPin, Users} from "lucide-react";
+
+
 export const navLinks = [
     {
         id: "/#home",
@@ -13,21 +16,21 @@ export const navLinks = [
         ],
     },
     {
-        id: "about",
+        id: "ConferenceInfo",
         title: "Conference Info",
         subItems: [
-            { id: "history", title: "Home" },
+            { id: "/#home", title: "Home" },
             { id: "mission", title: "Event Registration" },
             { id: "vision", title: "Publication" },
         ],
     },
     {
         id: "/#about",
-        title: "Preparing Final Manuscripts",
+        title: "Final Manuscripts",
     },
     {
         id: "/#events",
-        title: "Conference Venue",
+        title: "Venue",
     },
     {
         id: "/team",
@@ -38,3 +41,56 @@ export const navLinks = [
         title: "Important-Dates",
     },
 ];
+
+export const ProgramOptions: { title: string; href: string; }[] = [
+    {
+        title: "Committee",
+        href: "/docs/primitives/alert-dialog",
+    },
+    {
+        title: "Call For Paper",
+        href: "/docs/primitives/hover-card",
+    },
+    {
+        title: "Publication",
+        href: "/docs/primitives/hover-card",
+    },
+]
+
+export const ConferenceInfoOptions: { title: string; href: string; }[] = [
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Event Registration",
+        href: "/docs/primitives/hover-card",
+    },
+    {
+        title: "Publication",
+        href: "/docs/primitives/hover-card",
+    },
+]
+
+type InfoItemKey = 'date' | 'location' | 'attendees';
+
+export const infoItems: {key: InfoItemKey; icon: React.ElementType;title: string;content: string;}[] = [
+    {
+        key: 'date',
+        icon: Calendar,
+        title: 'Event Date',
+        content: 'February 01-02, 2025',
+    },
+    {
+        key: 'location',
+        icon: MapPin,
+        title: 'Location',
+        content: 'Sathyabama Centre for Advanced Studies (SCAS)',
+    },
+    {
+        key: 'attendees',
+        icon: Users,
+        title: 'Attendees',
+        content: 'UG, PG, Industrial Experts, Researchers',
+    },
+]

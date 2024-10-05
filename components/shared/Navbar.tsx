@@ -5,6 +5,8 @@ import Link from "next/link"
 import { Menu } from 'lucide-react'
 import styles from "@/app/styles"
 import { navLinks } from "@/constants"
+import Image from "next/image"
+import {College_Logo} from "@/public/assets/images"
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -12,6 +14,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import {
     Sheet,
@@ -27,11 +30,11 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import {Button} from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 export default function NavBar() {
     const [scrolled, setScrolled] = useState(false)
-
-    const commonStyle = "transition ease-in-out duration-150 font-normal cursor-pointer text-md hover:scale-110"
 
     const handleScroll = () => {
         setScrolled(window.scrollY > 10)
@@ -43,92 +46,105 @@ export default function NavBar() {
     }, [])
 
     return (
-        <header className={`w-full fixed top-0 z-50 transition-all duration-300 ease-in-out ${scrolled ? 'bg-[#12141C] backdrop-blur-md' : 'bg-transparent'}`}>
+        <header className={`w-full fixed top-0 z-50 transition-all duration-300 ease-in-out ${scrolled ? 'backdrop-blur-md' : ''}`}>
             <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
-                    <nav className="w-full flex py-5 justify-center items-center">
-                        <div className={"md:hidden"}>
+                    <nav className="w-full flex py-5 justify-between items-center">
+                        <Link href="/" className="text-white text-xl font-bold flex items-center">
+                            <Image
+                                src={College_Logo}
+                                alt={'College Logo'}
+                                height={45}
+                                className="mr-2"
+                            />
+                        </Link>
+                        <div className="md:hidden">
                             <Sheet>
-                                <SheetTrigger asChild className="flex-1">
-                                    <a className="cursor-pointer ">
-                                        <Menu className={"text-white"}/>
-                                    </a>
+                                <SheetTrigger asChild>
+                                    <Button variant={'ghost'}>
+                                        <Menu className="text-white"/>
+                                    </Button>
                                 </SheetTrigger>
-                                <SheetContent side="left" className="bg-[#12141C] h-full w-[300px]">
+                                <SheetContent side="top" className="overflow-y-auto bg-[#12141C]">
                                     <SheetHeader>
-                                        <SheetTitle className="text-start mb-9 text-white">
-                                            Menu
+                                        <SheetTitle>
+                                            <Link href="/" className="text-white text-xl font-bold flex">
+                                                <Image
+                                                    src={College_Logo}
+                                                    alt={'College Logo'}
+                                                    height={50}
+                                                    className="mr-2"
+                                                />
+                                            </Link>
                                         </SheetTitle>
                                     </SheetHeader>
-                                    <Accordion type="single" collapsible className="w-full">
+                                    <nav className="mt-8">
                                         {navLinks.map((nav) => (
-                                            <AccordionItem value={nav.id} key={nav.id}>
+                                            <div key={nav.id} className="mb-4">
                                                 {nav.subItems ? (
-                                                    <>
-                                                        <AccordionTrigger className="text-white hover:no-underline">
-                                                            {nav.title}
-                                                        </AccordionTrigger>
-                                                        <AccordionContent>
-                                                            <ul className="pl-4">
-                                                                {nav.subItems.map((subItem) => (
-                                                                    <li key={subItem.id} className="mb-2">
-                                                                        <SheetClose asChild>
-                                                                            <Link href={`/${nav.id}/${subItem.id}`} className="text-white hover:text-gray-300">
-                                                                                {subItem.title}
-                                                                            </Link>
-                                                                        </SheetClose>
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
-                                                        </AccordionContent>
-                                                    </>
+                                                    <Accordion type="single" collapsible>
+                                                        <AccordionItem value={nav.id}>
+                                                            <AccordionTrigger className="text-white hover:no-underline py-4 text-lg">
+                                                                {nav.title}
+                                                            </AccordionTrigger>
+                                                            <AccordionContent>
+                                                                <ul className="pl-4 space-y-2">
+                                                                    {nav.subItems.map((subItem) => (
+                                                                        <li key={subItem.id}>
+                                                                            <SheetClose asChild>
+                                                                                <Link href={`/${nav.id}/${subItem.id}`}
+                                                                                      className="text-gray-300 hover:text-white block py-2">
+                                                                                    {subItem.title}
+                                                                                </Link>
+                                                                            </SheetClose>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            </AccordionContent>
+                                                        </AccordionItem>
+                                                    </Accordion>
                                                 ) : (
-                                                    <AccordionTrigger className="text-white hover:no-underline">
-                                                        <SheetClose asChild>
-                                                            <Link href={`/${nav.id}`}>{nav.title}</Link>
-                                                        </SheetClose>
-                                                    </AccordionTrigger>
+                                                    <SheetClose asChild>
+                                                        <Link href={`/${nav.id}`} className="text-white hover:text-gray-300 block py-4 text-lg">
+                                                            {nav.title}
+                                                        </Link>
+                                                    </SheetClose>
                                                 )}
-                                            </AccordionItem>
+                                            </div>
                                         ))}
-                                    </Accordion>
+                                    </nav>
                                 </SheetContent>
                             </Sheet>
                         </div>
 
                         <div className="hidden md:flex justify-center items-center">
                             <NavigationMenu>
-                                <NavigationMenuList>
+                                <NavigationMenuList className="bg-transparent">
                                     {navLinks.map((nav) => (
                                         <NavigationMenuItem key={nav.id}>
                                             {nav.subItems ? (
-                                                <>
-                                                    <NavigationMenuTrigger className="bg-transparent text-white hover:bg-[#12141C] hover:text-white focus:bg-[#12141C] focus:text-white">
-                                                        {nav.title}
-                                                    </NavigationMenuTrigger>
-                                                    <NavigationMenuContent>
-                                                        <ul className="grid w-[200px] gap-3 p-4 md:w-[200px] md:grid-cols-1 lg:w-[200px] bg-[#12141C]">
-                                                            {nav.subItems.map((subItem) => (
-                                                                <li key={subItem.id}>
-                                                                    <NavigationMenuLink asChild>
-                                                                        <Link
-                                                                            href={`/${nav.id}/${subItem.id}`}
-                                                                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#1a1d29] hover:text-white focus:bg-[#1a1d29] focus:text-white text-white"
-                                                                        >
-                                                                            {subItem.title}
-                                                                        </Link>
-                                                                    </NavigationMenuLink>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </NavigationMenuContent>
-                                                </>
+                                                <NavigationMenuTrigger className="bg-transparent text-white hover:text-blue-400 hover:bg-transparent data-[state=open]:bg-transparent">
+                                                    {nav.title}
+                                                </NavigationMenuTrigger>
                                             ) : (
-                                                <Link href={`/${nav.id}`} legacyBehavior passHref>
-                                                    <NavigationMenuLink className={`${commonStyle} mx-4 text-white`}>
+                                                <Link href={`${nav.id}`} legacyBehavior passHref>
+                                                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white hover:text-blue-400 focus:bg-transparent hover:bg-transparent")}>
                                                         {nav.title}
                                                     </NavigationMenuLink>
                                                 </Link>
+                                            )}
+                                            {nav.subItems && (
+                                                <NavigationMenuContent>
+                                                    <ul className="grid w-[250px] gap-2 p-3 bg-dark_blue">
+                                                        {nav.subItems.map((subItem) => (
+                                                            <ListItem
+                                                                key={subItem.id}
+                                                                title={subItem.title}
+                                                                href={`${subItem.id}`}
+                                                            />
+                                                        ))}
+                                                    </ul>
+                                                </NavigationMenuContent>
                                             )}
                                         </NavigationMenuItem>
                                     ))}
@@ -141,3 +157,26 @@ export default function NavBar() {
         </header>
     )
 }
+
+const ListItem = React.forwardRef<
+    React.ElementRef<"a">,
+    React.ComponentPropsWithoutRef<"a">
+>(({className, title, ...props }, ref) => {
+    return (
+        <li>
+            <NavigationMenuLink asChild>
+                <a
+                    ref={ref}
+                    className={cn(
+                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white text-gray-200",
+                        className
+                    )}
+                    {...props}
+                >
+                    <div className="text-sm font-medium leading-none">{title}</div>
+                </a>
+            </NavigationMenuLink>
+        </li>
+    )
+})
+ListItem.displayName = "ListItem"
