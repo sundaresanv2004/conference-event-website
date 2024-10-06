@@ -80,20 +80,20 @@ export default function NavBar() {
                                     </SheetHeader>
                                     <nav className="mt-8">
                                         {navLinks.map((nav) => (
-                                            <div key={nav.id} className="mb-4">
+                                            <div key={nav.id} className="mb-2">
                                                 {nav.subItems ? (
                                                     <Accordion type="single" collapsible>
-                                                        <AccordionItem value={nav.id}>
-                                                            <AccordionTrigger className="text-white hover:no-underline py-4 text-lg">
+                                                        <AccordionItem value={nav.id} className="border-b-0">
+                                                            <AccordionTrigger className="hover:no-underline hover:text-blue-400 py-2 text-base">
                                                                 {nav.title}
                                                             </AccordionTrigger>
                                                             <AccordionContent>
-                                                                <ul className="pl-4 space-y-2">
+                                                                <ul className="pl-4 space-y-1">
                                                                     {nav.subItems.map((subItem) => (
                                                                         <li key={subItem.id}>
                                                                             <SheetClose asChild>
-                                                                                <Link href={`/${nav.id}/${subItem.id}`}
-                                                                                      className="text-gray-300 hover:text-white block py-2">
+                                                                                <Link href={`${subItem.id}`}
+                                                                                      className="hover:text-blue-400 block py-2 text-base">
                                                                                     {subItem.title}
                                                                                 </Link>
                                                                             </SheetClose>
@@ -105,7 +105,7 @@ export default function NavBar() {
                                                     </Accordion>
                                                 ) : (
                                                     <SheetClose asChild>
-                                                        <Link href={`/${nav.id}`} className="text-white hover:text-gray-300 block py-4 text-lg">
+                                                        <Link href={`${nav.id}`} className="hover:text-blue-400 block py-2 text-base">
                                                             {nav.title}
                                                         </Link>
                                                     </SheetClose>

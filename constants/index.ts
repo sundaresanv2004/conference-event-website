@@ -10,7 +10,7 @@ export const navLinks = [
         id: "about",
         title: "Program",
         subItems: [
-            { id: "history", title: "Committee" },
+            { id: "/program/committee", title: "Committee" },
             { id: "mission", title: "Call For Paper" },
             { id: "vision", title: "Keynote Session" },
         ],
@@ -29,11 +29,11 @@ export const navLinks = [
         title: "Final Manuscripts",
     },
     {
-        id: "/#events",
+        id: "/venue",
         title: "Venue",
     },
     {
-        id: "/team",
+        id: "/contact",
         title: "Contact Us",
     },
     {
@@ -41,6 +41,84 @@ export const navLinks = [
         title: "Important-Dates",
     },
 ];
+
+export const contactInfo = [
+    {
+        name: "Dr. K. Paul Joshua",
+        position: "Assistant Professor",
+        department: "Dept. of CSE",
+        institution: "SCAS",
+        email: "icdici.conf@gmail.com",
+        phone: "+91-96003 68297"
+    },
+    {
+        name: "Dr. K. Paul Joshua",
+        position: "Assistant Professor",
+        department: "Dept. of CSE",
+        institution: "SCAS",
+        email: "icdici.conf@gmail.com",
+        phone: "+91-96003 68297"
+    },
+]
+
+interface CommitteeMember {
+    name: string
+    title: string
+    institution: string
+}
+
+interface CommitteeSection {
+    title: string
+    members: CommitteeMember[]
+}
+
+export const committeeData: CommitteeSection[] = [
+    {
+        title: "CHIEF PATRONS",
+        members: [
+            {
+                name: "Dr. Mariazeena Johnson",
+                title: "CHANCELLOR",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+            {
+                name: "Dr. Marie Johnson",
+                title: "PRESIDENT",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+            {
+                name: "Ms. Maria Catherine Johnson",
+                title: "VICE PRESIDENT",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+        ],
+    },
+    {
+        title: "PATRONS",
+        members: [
+            {
+                name: "Dr. T.Sasipraba",
+                title: "VICE CHANCELLOR",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+        ],
+    },
+    {
+        title: "CONVENORS",
+        members: [
+            {
+                name: "Dr. T.Sasikala",
+                title: "DEAN, SCHOOL OF COMPUTING",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+            {
+                name: "Dr. S.Vigneshwari",
+                title: "HEAD OF DEPARTMENT",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+        ],
+    },
+]
 
 export const ProgramOptions: { title: string; href: string; }[] = [
     {

@@ -29,7 +29,7 @@ export default function Footer() {
                         <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 justify-items-center lg:justify-items-end">
                             {navLinks.map((nav) => (
                                 <li key={nav.id} className="w-full sm:w-auto">
-                                    <Button variant="link" className="w-full sm:w-auto text-sm md:text-base">
+                                    <Button variant="link" className="w-full sm:w-auto text-sm md:text-base hover:text-blue-400">
                                         <Link href={nav.id}>{nav.title}</Link>
                                     </Button>
                                 </li>
