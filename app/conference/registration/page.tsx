@@ -32,11 +32,11 @@ const registrationFees = [
 
 export default function RegistrationPage() {
     return (
-        <main className="bg-blue_bg">
+        <main className="bg-blue_bg min-h-screen">
             <Navbar />
-            <div className="container mx-auto py-12 px-4 mt-16">
+            <div className="container mx-auto py-8 px-4 mt-16 sm:py-12 sm:px-6">
                 <motion.h1
-                    className="text-4xl sm:text-5xl font-bold text-center mb-12 text-white"
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 text-white"
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -45,16 +45,16 @@ export default function RegistrationPage() {
                 </motion.h1>
 
                 <Tabs defaultValue="guidelines" className="w-full">
-                    <TabsList className="grid w-full grid-cols-3 rounded-xl p-1">
-                        <TabsTrigger value="guidelines" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300">
+                    <TabsList className="flex flex-wrap justify-center mb-4 bg-gray-700 rounded-xl p-1">
+                        <TabsTrigger value="guidelines" className="flex-1 data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 px-2 py-1 text-sm sm:text-base">
                             <FileTextIcon className="mr-2 h-4 w-4" />
                             Guidelines
                         </TabsTrigger>
-                        <TabsTrigger value="fees" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300">
+                        <TabsTrigger value="fees" className="flex-1 data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 px-2 py-1 text-sm sm:text-base">
                             <CreditCard className="mr-2 h-4 w-4" />
                             Registration Fees
                         </TabsTrigger>
-                        <TabsTrigger value="copyright" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300">
+                        <TabsTrigger value="copyright" className="flex-1 data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 px-2 py-1 text-sm sm:text-base">
                             <Copyright className="mr-2 h-4 w-4" />
                             IEEE Ecopyright
                         </TabsTrigger>
@@ -65,13 +65,13 @@ export default function RegistrationPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Card className="bg-gray-800 shadow-lg">
+                            <Card className="bg-gray-800 shadow-lg mt-4">
                                 <CardHeader>
-                                    <CardTitle>Registration Guidelines</CardTitle>
-                                    <CardDescription>Please read the following guidelines carefully before registering.</CardDescription>
+                                    <CardTitle className="text-xl sm:text-2xl text-white">Registration Guidelines</CardTitle>
+                                    <CardDescription className="text-gray-300">Please read the following guidelines carefully before registering.</CardDescription>
                                 </CardHeader>
                                 <CardContent>
-                                    <ul className="list-disc pl-5 space-y-2 text-gray-300">
+                                    <ul className="list-disc pl-5 space-y-2 text-gray-300 text-sm sm:text-base">
                                         {guidelines.map((guideline, index) => (
                                             <li key={index}>{guideline}</li>
                                         ))}
@@ -86,17 +86,17 @@ export default function RegistrationPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Card className="bg-gray-800 shadow-lg">
+                            <Card className="bg-gray-800 shadow-lg mt-4">
                                 <CardHeader>
-                                    <CardTitle>Registration Fees</CardTitle>
-                                    <CardDescription>Select your registration type and proceed to payment.</CardDescription>
+                                    <CardTitle className="text-xl sm:text-2xl text-white">Registration Fees</CardTitle>
+                                    <CardDescription className="text-gray-300">Select your registration type and proceed to payment.</CardDescription>
                                 </CardHeader>
-                                <CardContent>
+                                <CardContent className="overflow-x-auto">
                                     <Table>
                                         <TableCaption className="text-gray-300">Registration fee includes conference and publication fee.</TableCaption>
                                         <TableHeader>
                                             <TableRow>
-                                                <TableHead className="w-[200px] text-white">Type</TableHead>
+                                                <TableHead className="w-[100px] sm:w-[200px] text-white">Type</TableHead>
                                                 <TableHead className="text-white">IEEE ComSoc Member</TableHead>
                                                 <TableHead className="text-white">IEEE Member</TableHead>
                                                 <TableHead className="text-white">Non IEEE Member</TableHead>
@@ -115,7 +115,7 @@ export default function RegistrationPage() {
                                     </Table>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button className="w-full">
+                                    <Button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white">
                                         Proceed to Payment
                                     </Button>
                                 </CardFooter>
@@ -128,26 +128,26 @@ export default function RegistrationPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Card className="bg-gray-800 shadow-lg">
+                            <Card className="bg-gray-800 shadow-lg mt-4">
                                 <CardHeader>
-                                    <CardTitle>IEEE Ecopyright Submission</CardTitle>
-                                    <CardDescription>Submit your copyright information for the conference proceedings.</CardDescription>
+                                    <CardTitle className="text-xl sm:text-2xl text-white">IEEE Ecopyright Submission</CardTitle>
+                                    <CardDescription className="text-gray-300">Submit your copyright information for the conference proceedings.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                                        <Label htmlFor="articleTitle">Article Title</Label>
+                                    <div className="grid w-full items-center gap-1.5">
+                                        <Label htmlFor="articleTitle" className="text-white">Article Title</Label>
                                         <Input id="articleTitle" className="bg-gray-700 text-gray-100" />
                                     </div>
-                                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                                        <Label htmlFor="authorName">Authors Name</Label>
+                                    <div className="grid w-full items-center gap-1.5">
+                                        <Label htmlFor="authorName" className="text-white">Authors Name</Label>
                                         <Input id="authorName" className="bg-gray-700 text-gray-100" />
                                     </div>
-                                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                                        <Label htmlFor="articleId">Article Id</Label>
+                                    <div className="grid w-full items-center gap-1.5">
+                                        <Label htmlFor="articleId" className="text-white">Article Id</Label>
                                         <Input id="articleId" className="bg-gray-700 text-gray-100" />
                                     </div>
-                                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                                        <Label htmlFor="authorEmail">Author Email</Label>
+                                    <div className="grid w-full items-center gap-1.5">
+                                        <Label htmlFor="authorEmail" className="text-white">Author Email</Label>
                                         <Input id="authorEmail" type="email" className="bg-gray-700 text-gray-100" />
                                     </div>
                                     <div className="flex items-center space-x-2">
@@ -161,7 +161,7 @@ export default function RegistrationPage() {
                                     </div>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button type="submit" className="w-full">
+                                    <Button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-600 text-white">
                                         Submit Copyright Form
                                     </Button>
                                 </CardFooter>

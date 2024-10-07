@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
     const [timeLeft, setTimeLeft] = useState({
@@ -52,16 +53,20 @@ export default function Hero() {
                                     opportunities in the field of AI and cognitive science.
                                 </p>
                                 <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                                    <Button size="lg" className="bg-white text-black hover:bg-gray-200">
-                                        Register Now
-                                    </Button>
-                                    <Button
-                                        size="lg"
-                                        variant="outline"
-                                        className="text-white border-white hover:bg-white hover:text-black"
-                                    >
-                                        Learn More
-                                    </Button>
+                                    <Link href={"/conference/registration"}>
+                                        <Button size="lg" className="bg-white text-black hover:bg-gray-200">
+                                            Register Now
+                                        </Button>
+                                    </Link>
+                                    <a href={"/#About"}>
+                                        <Button
+                                            size="lg"
+                                            variant="outline"
+                                            className="text-white border-white hover:bg-white hover:text-black"
+                                        >
+                                            Learn More
+                                        </Button>
+                                    </a>
                                 </div>
                             </motion.div>
                         </div>
