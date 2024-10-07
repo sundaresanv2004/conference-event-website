@@ -28,7 +28,7 @@ const ContactCard: React.FC<{ info: ContactInfo; index: number }> = ({ info, ind
         transition={{ duration: 0.5, delay: index * 0.1 }}
         className="w-full"
     >
-        <Card className="h-full bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-xl">
+        <Card className="h-full bg-gradient-to-br from-indigo-400 to-indigo-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
             <CardHeader className="flex flex-col sm:flex-row items-center gap-4">
                 <Avatar className="h-16 w-16 border-2 border-white">
                     <AvatarImage src={info.image} alt={info.name} />

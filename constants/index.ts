@@ -11,8 +11,8 @@ export const navLinks = [
         title: "Program",
         subItems: [
             { id: "/program/committee", title: "Committee" },
-            { id: "mission", title: "Call For Paper" },
-            { id: "vision", title: "Keynote Session" },
+            { id: "/program/cfp", title: "Call For Paper" },
+            { id: "/program/keynote", title: "Keynote Session" },
         ],
     },
     {
@@ -20,12 +20,12 @@ export const navLinks = [
         title: "Conference Info",
         subItems: [
             { id: "/#home", title: "Home" },
-            { id: "mission", title: "Event Registration" },
-            { id: "vision", title: "Publication" },
+            { id: "/conference/registration", title: "Event Registration" },
+            { id: "/conference/publication", title: "Publication" },
         ],
     },
     {
-        id: "/#about",
+        id: "/manuscripts",
         title: "Final Manuscripts",
     },
     {

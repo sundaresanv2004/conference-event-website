@@ -1,43 +1,10 @@
 import React from 'react';
-import Link from "next/link";
-import {Button} from "@/components/ui/button";
-import {navLinks} from "@/constants";
-import Image from "next/image";
-import {College_Logo} from "@/public/assets/images";
 
 
 export default function Footer() {
     return (
         <footer className="bg-blue_bg text-primary-foreground">
             <div className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
-                <div className="flex flex-col space-y-8 lg:flex-row lg:justify-between lg:space-y-0">
-                    <div className="flex flex-col items-center lg:items-start space-y-4">
-                        <a href="https://www.sathyabama.ac.in/" target="_blank" rel="noopener noreferrer" className="inline-block">
-                            <Image
-                                src={College_Logo}
-                                alt="Sathyabama Logo"
-                                width={224}
-                                height={56}
-                                className="w-36 sm:w-48 md:w-56"
-                            />
-                        </a>
-                        <p className="text-sm text-white/70 text-center lg:text-left max-w-xs">
-                            Empowering minds, fostering innovation, and shaping the future through education and research.
-                        </p>
-                    </div>
-                    <nav className="w-full lg:w-auto">
-                        <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 justify-items-center lg:justify-items-end">
-                            {navLinks.map((nav) => (
-                                <li key={nav.id} className="w-full sm:w-auto">
-                                    <Button variant="link" className="w-full sm:w-auto text-sm md:text-base hover:text-blue-400">
-                                        <Link href={nav.id}>{nav.title}</Link>
-                                    </Button>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-                </div>
-
                 <hr className="my-8 border-white/20" />
 
                 <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
