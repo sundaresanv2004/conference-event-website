@@ -8,6 +8,46 @@ import { Navbar } from "@/components/shared"
 import { ChevronUp } from "lucide-react"
 import { committeeData } from '@/constants'
 
+interface CommitteeMember {
+    name: string
+    title: string
+    institution: string
+}
+
+const AnimatedCard = ({ member, index }: { member: CommitteeMember; index: number }) => {
+    const [scope, animate] = useAnimate()
+
+    useEffect(() => {
+        animate(scope.current, { opacity: [0, 1], y: [50, 0] }, { delay: index * 0.1, duration: 0.5 })
+    }, [animate, index, scope])
+
+    return (
+        <motion.div
+            ref={scope}
+            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)" }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="w-full max-w-sm"
+        >
+            <Card className="bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-900 border-2 border-indigo-300 shadow-lg overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
+                    <CardTitle className="text-xl font-bold text-center">{member.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.3 }}
+                        className="text-center"
+                    >
+                        <p className="text-indigo-700 font-semibold mb-2">{member.title}</p>
+                        <p className="text-sm text-indigo-600">{member.institution}</p>
+                    </motion.div>
+                </CardContent>
+            </Card>
+        </motion.div>
+    )
+}
+
 const technicalProgramChairs = [
     {
         name: "Dr. Jinsong Wu",
@@ -53,45 +93,6 @@ const technicalProgramCommittee = [
     },
 ]
 
-interface CommitteeMember {
-    name: string
-    title: string
-    institution: string
-}
-
-const AnimatedCard = ({ member, index }: { member: CommitteeMember; index: number }) => {
-    const [scope, animate] = useAnimate()
-
-    useEffect(() => {
-        animate(scope.current, { opacity: [0, 1], y: [50, 0] }, { delay: index * 0.1, duration: 0.5 })
-    }, [animate, index, scope])
-
-    return (
-        <motion.div
-            ref={scope}
-            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)" }}
-            transition={{ type: "spring", stiffness: 300 }}
-        >
-            <Card className="bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-900 border-2 border-indigo-300 shadow-lg overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
-                    <CardTitle className="text-xl font-bold text-center">{member.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.3 }}
-                        className="text-center"
-                    >
-                        <p className="text-indigo-700 font-semibold mb-2">{member.title}</p>
-                        <p className="text-sm text-indigo-600">{member.institution}</p>
-                    </motion.div>
-                </CardContent>
-            </Card>
-        </motion.div>
-    )
-}
-
 export default function ConferenceCommittee() {
     const [showBackToTop, setShowBackToTop] = useState(false)
 
@@ -131,7 +132,7 @@ export default function ConferenceCommittee() {
                             transition={{ delay: 0.2 * sectionIndex, duration: 0.5 }}
                         >
                             <h2 className="text-3xl font-bold text-center mb-10">{section.title}</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div className="flex flex-wrap justify-center gap-8">
                                 {section.members.map((member, index) => (
                                     <AnimatedCard key={index} member={member} index={index} />
                                 ))}

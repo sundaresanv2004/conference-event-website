@@ -15,32 +15,27 @@ const topics = {
         "Big Data Intelligence",
         "Information Retrieval Techniques",
         "Image/Video Processing and Analysis",
-        "Data Integration Techniques",
-        "Web Data Management Techniques",
-        "Big Data Storage and Processing Architectures",
+        // "Data Integration Techniques", "Web Data Management Techniques", "Big Data Storage and Processing Architectures",
         "Distributed and Parallel Databases",
-        "Access Control and Authorization Techniques",
+        // "Access Control and Authorization Techniques",
         "Natural Language Processing",
         "Big Data as a Service",
-        "Data Pre-Processing Techniques",
-        "Multi-Structured Data Processing Techniques",
+        // "Data Pre-Processing Techniques", "Multi-Structured Data Processing Techniques",
         "Computational Modeling and Data Integration Techniques",
         "Security and Privacy-Preserving Big Data Analytics"
     ],
     cognitiveIntelligence: [
-        "Cognitively Inspired Computing and Communications",
+        // "Cognitively Inspired Computing and Communications",
         "Cognitive Foundation in Big Data",
         "Cognitive Robotics",
         "Autonomous Computing Technologies",
         "Cognitive Information Processing Model",
-        "Cognitive Human-Computer Interaction Techniques",
+        // "Cognitive Human-Computer Interaction Techniques",
         "Deep Learning",
         "Data-Driven Fuzzy Systems and Models",
-        "Cognition based Human-Machine Cooperation",
-        "Cognitive Interferences in Data Processing",
+        // "Cognition based Human-Machine Cooperation", "Cognitive Interferences in Data Processing",
         "Cognitive Information Theory",
-        "Neuro-Computing and Brain-System Interfaces",
-        "Knowledge Processors and Manipulations",
+        // "Neuro-Computing and Brain-System Interfaces", "Knowledge Processors and Manipulations",
         "Intelligent Decision Theories and Models",
         "Distributed Data Intelligence Models",
         "Cognitive Data Modeling and Mining Techniques"
@@ -57,9 +52,9 @@ const topics = {
         "Wearable and Personalized Technologies",
         "Smart Virtual Environments",
         "Mobile Technologies and Services",
-        "E-learning",
+        // "E-learning",
         "Gaming Theory",
-        "Smart User Interfaces",
+        // "Smart User Interfaces",
         "Multimedia and Video Processing"
     ]
 }
@@ -90,30 +85,31 @@ export default function CallForPapersPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    CALL FOR PAPERS
+                    Call For Paper
                 </motion.h1>
 
                 <Tabs defaultValue="informatics" className="w-full">
-                    <TabsList className="grid w-full grid-cols-3 mb-8 rounded-xl p-1 bg-gray-800">
+                    <TabsList className="grid w-full grid-cols-3 mb-6 sm:mb-8 rounded-xl p-1 bg-gray-800">
                         <TabsTrigger
                             value="informatics"
-                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300"
+                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
                         >
                             Informatics
                         </TabsTrigger>
                         <TabsTrigger
                             value="cognitiveIntelligence"
-                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300"
+                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
                         >
                             Cognitive Intelligence
                         </TabsTrigger>
                         <TabsTrigger
                             value="applications"
-                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300"
+                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
                         >
                             Applications
                         </TabsTrigger>
                     </TabsList>
+
                     <TabsContent value="informatics">
                         {topics.informatics.map((topic, index) => (
                             <TopicCard key={index} topic={topic} />

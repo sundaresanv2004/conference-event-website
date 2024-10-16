@@ -74,7 +74,7 @@ interface CommitteeSection {
 
 export const committeeData: CommitteeSection[] = [
     {
-        title: "CHIEF PATRONS",
+        title: "Chief Patrons",
         members: [
             {
                 name: "Dr. Mariazeena Johnson",
@@ -94,26 +94,26 @@ export const committeeData: CommitteeSection[] = [
         ],
     },
     {
-        title: "PATRONS",
+        title: "Patrons",
         members: [
             {
-                name: "Dr. T.Sasipraba",
+                name: "Dr. T. Sasipraba",
                 title: "VICE CHANCELLOR",
                 institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
             },
         ],
     },
     {
-        title: "CONVENORS",
+        title: "Convenors",
         members: [
             {
-                name: "Dr. T.Sasikala",
+                name: "Dr. T. Sasikala",
                 title: "DEAN, SCHOOL OF COMPUTING",
                 institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
             },
             {
-                name: "Dr. S.Vigneshwari",
-                title: "HEAD OF DEPARTMENT",
+                name: "Dr. S. Vigneshwari",
+                title: "HEAD OF THE DEPARTMENT (Specialisation)",
                 institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
             },
         ],

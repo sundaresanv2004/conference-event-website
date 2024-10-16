@@ -2,190 +2,321 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { DownloadIcon, UploadIcon, CheckCircleIcon, FileTextIcon, BookOpenIcon, FileIcon } from 'lucide-react'
+import { DownloadIcon } from 'lucide-react'
+import Link from 'next/link'
 import { Navbar } from "@/components/shared"
 
-const guidelines = {
-    submission: [
-        "Papers should be no more than 3000 words (Minimum 4 pages and maximum 8 pages) and should be written in English.",
-        "You are welcome to include additional information, such as illustrations, graphs or tables, as attachments.",
-        "Please do not submit the same paper more than once.",
-        "Authors are not allowed to submit multiple papers within the same category.",
-        "Prior to full-paper submissions –all author's consent must be obtained."
-    ],
-    content: [
-        { title: "Abstract", description: "Summarise the scope and nature of the work including few lines about the results (250 - 300 words)" },
-        { title: "Introduction", description: "Brief overview the technology considered, why this research work was undertaken, technology used, etc." },
-        { title: "Literature Review", description: "A brief summarization on the existing research works and its limitations." },
-        { title: "Technical Contributions", description: "Describe the significance of the proposed research objective by listing technical contributions." },
-        { title: "Methodology", description: "Dataset description, proposed workflow, block diagram, architecture, mathematical formulation, and theoretical description." }
-    ]
-}
-
-export default function ManuscriptsPage() {
+export default function ManuscriptSubmission() {
     return (
-        <main className="bg-blue_bg">
-            <Navbar/>
-            <div className="container mx-auto py-12 px-4 mt-16">
-                <motion.h1
-                    className="text-4xl sm:text-5xl xl font-bold text-center mb-12"
-                    initial={{opacity: 0, y: -50}}
-                    animate={{opacity: 1, y: 0}}
-                    transition={{duration: 0.5}}
+        <div className="min-h-screen bg-blue_bg text-gray-100">
+            <Navbar />
+            <div className="container mx-auto py-4 sm:py-8 px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 mt-16 sm:mt-20">
+                <motion.header
+                    className="mb-6 sm:mb-8"
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
                 >
-                    Manuscript Submission
-                </motion.h1>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center">Manuscript Submission</h1>
+                </motion.header>
 
-                <Tabs defaultValue="submission" className="w-full">
-                    <TabsList className="grid w-full grid-cols-3 rounded-xl p-1">
-                        <TabsTrigger value="submission" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300">
-                            <FileTextIcon className="mr-2 h-4 w-4" />
-                            Submission
-                        </TabsTrigger>
-                        <TabsTrigger value="guidelines" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300">
-                            <BookOpenIcon className="mr-2 h-4 w-4" />
+                <Tabs defaultValue="policies" className="w-full">
+                    <TabsList className="grid w-full grid-cols-3 mb-6 sm:mb-8 rounded-xl p-1 bg-gray-800">
+                        <TabsTrigger
+                            value="policies"
+                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
+                        >
                             Guidelines
                         </TabsTrigger>
-                        <TabsTrigger value="templates" className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300">
-                            <FileIcon className="mr-2 h-4 w-4" />
-                            Templates
+                        <TabsTrigger
+                            value="fullpaper"
+                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
+                        >
+                            Paper Content
+                        </TabsTrigger>
+                        <TabsTrigger
+                            value="submission"
+                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
+                        >
+                            Submission
                         </TabsTrigger>
                     </TabsList>
+
+                    <TabsContent value="policies">
+                        <motion.div
+                            initial={{opacity: 0, y: 20}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{duration: 0.5}}
+                            className="space-y-6"
+                        >
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
+                                <CardHeader>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Guidelines for Accepted
+                                        Abstracts</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <ul className="list-disc pl-5 space-y-2 text-gray-300">
+                                        <li>You will be notified on the acceptance notification date if your full-paper
+                                            has been accepted. All authors who submitted their papers will receive an
+                                            email stating if their papers have been accepted or not.
+                                        </li>
+                                        <li>All the presenters will receive complimentary access to all two days of the
+                                            Technical Conference.
+                                        </li>
+                                        <li>The organiser assumes no obligation for expenses by authors for travel and
+                                            accommodation to attend and speak at the event.
+                                        </li>
+                                    </ul>
+                                </CardContent>
+                            </Card>
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
+                                <CardHeader>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Selection
+                                        Criteria</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="mb-4 text-gray-300">Your full-paper will be evaluated by the Technical
+                                        Committee members according to the following grading criteria:</p>
+                                    <ul className="list-disc pl-5 space-y-2 mb-4 text-gray-300">
+                                        <li><strong className="text-indigo-300">Impact</strong> – The research impact of
+                                            your work will be analysed.
+                                        </li>
+                                        <li><strong className="text-indigo-300">Novelty</strong> – Your research paper
+                                            should demonstrate innovation and originality and contain significant new
+                                            knowledge and technical results.
+                                        </li>
+                                        <li><strong className="text-indigo-300">Interest & Relevance</strong> –
+                                            Evaluates how relevant is your full-paper submission to the scope of the
+                                            conference? How interesting is the subject matter to the ICDICI audience?
+                                        </li>
+                                    </ul>
+                                </CardContent>
+                            </Card>
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
+                                <CardHeader>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Technical
+                                        Categories</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="mb-4 text-gray-300">There is a choice of 3 different technical
+                                        categories, all of which have multiple subcategories. Please have a thorough
+                                        read through all of them and check whether your research scope falls under any
+                                        one of the topic listed in Call for Papers.</p>
+                                    <p className="text-gray-300">Please do not submit the same paper or a slightly
+                                        modified version more than once as duplicates will be deleted.</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
+                                <CardHeader>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Informalism/Machine
+                                        Generated Phrases</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-gray-300">Your full-paper should not use language that is
+                                        informal in tone / AI-generated in the title or body text. The use of such terms
+                                        will be considered as &#34;Indirect Plagiarism&#34; and will result in careful
+                                        scrutiny by the Technical Committee and may result in rejection from the
+                                        evaluation process.</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
+                                <CardHeader>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Plagiarism
+                                        Policy</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="mb-4 text-gray-300">After receiving the initial full-paper submission,
+                                        we check the plagiarism using software and handle it as follows:</p>
+                                    <ul className="list-disc pl-5 space-y-2 text-gray-300">
+                                        <li>If Plagiarism is {'<'}15 %: If we find Single Source {'<'}10% then only we
+                                            will directly send paper for further review process.
+                                        </li>
+                                        <li>If Plagiarism is 15-30 %: In this case, we will send back to the author for
+                                            further revision.
+                                        </li>
+                                        <li>If Plagiarism {'>'}30 %: We reject Article straight forward.</li>
+                                    </ul>
+                                    <h4 className="font-semibold mt-4 mb-2 text-indigo-300">Plagiarism after
+                                        Publication:</h4>
+                                    <p className="text-gray-300">If we find Plagiarism after the publishing of a paper,
+                                        then after verifying the copied content the paper may be retracted.</p>
+                                    <p className="mt-4 text-gray-300">Author(s) should not submit the same paper to
+                                        multiple conferences/journals for publications. This may also lead to
+                                        post-publication plagiarism.</p>
+                                </CardContent>
+                            </Card>
+                        </motion.div>
+                    </TabsContent>
+
+                    <TabsContent value="fullpaper">
+                        <motion.div
+                            initial={{opacity: 0, y: 20}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{duration: 0.5}}
+                            className="space-y-6"
+                        >
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
+                                <CardHeader>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Full-Paper
+                                        Submission</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-gray-300">The full-paper submission should be made according to
+                                        the following guidelines:</p>
+                                    <ul className="list-disc pl-5 space-y-2 text-gray-300 mt-2">
+                                        <li>The full-paper should be submitted in PDF format.</li>
+                                        <li>The paper should be written in English and should not exceed 6 pages
+                                            including figures, tables, and references.
+                                        </li>
+                                        <li>Use the provided template for formatting your paper.</li>
+                                        <li>Ensure that your paper adheres to the plagiarism policy mentioned in the
+                                            guidelines.
+                                        </li>
+                                        <li>Submit your paper before the deadline mentioned on the conference website.
+                                        </li>
+                                    </ul>
+                                </CardContent>
+                            </Card>
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
+                                <CardHeader>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Full-Paper
+                                        Content</CardTitle>
+                                    <CardDescription className="text-gray-400">Your full-paper should contain adequate
+                                        information for review by the Technical Committee including</CardDescription>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="space-y-4">
+                                        {[
+                                            {
+                                                title: "Abstract",
+                                                description: "Summarise the scope and nature of the work including few lines about the results (250 - 300 words)"
+                                            },
+                                            {
+                                                title: "Introduction",
+                                                description: "Brief overview the technology considered, why this research work was undertaken, technology used, etc."
+                                            },
+                                            {
+                                                title: "Literature Review",
+                                                description: "A brief summarization on the existing research works and its limitations."
+                                            },
+                                            {
+                                                title: "Technical Contributions",
+                                                description: "describe the significance of the proposed research objective by listing technical contributions."
+                                            },
+                                            {
+                                                title: "Methodology",
+                                                description: "Dataset description, proposed workflow, block diagram, architecture, mathematical formulation, and theoretical description."
+                                            },
+                                            {
+                                                title: "Results and Discussion",
+                                                description: "Discuss about the simulation or implementation of the proposed methods and discuss about the resultant performance analysis with a comparative study."
+                                            },
+                                            {
+                                                title: "Conclusion and Future Scope",
+                                                description: "Summarise the results and major conclusions to be presented, explain how these differ from previous work on the same subject."
+                                            }
+                                        ].map((item, index) => (
+                                            <Card key={index} className="bg-gray-700 border-gray-600">
+                                                <CardHeader>
+                                                    <CardTitle
+                                                        className="text-indigo-300 text-lg sm:text-xl">{item.title}</CardTitle>
+                                                </CardHeader>
+                                                <CardContent>
+                                                    <p className="text-gray-300">{item.description}</p>
+                                                </CardContent>
+                                            </Card>
+                                        ))}
+                                    </div>
+                                    <p className="mt-6 text-gray-300">We also accept the research metadata analysis and
+                                        review works.</p>
+                                </CardContent>
+                            </Card>
+                        </motion.div>
+                    </TabsContent>
+
                     <TabsContent value="submission">
                         <motion.div
                             initial={{opacity: 0, y: 20}}
                             animate={{opacity: 1, y: 0}}
                             transition={{duration: 0.5}}
+                            className="space-y-6"
                         >
-                            <Card className="bg-gray-800 shadow-lg">
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
                                 <CardHeader>
-                                    <CardTitle>Submit Your Manuscript</CardTitle>
-                                    <CardDescription>Upload your manuscript for review by the Technical
-                                        Committee.</CardDescription>
-                                </CardHeader>
-                                <CardContent className="space-y-4">
-                                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                                        <Label htmlFor="manuscript">Manuscript File</Label>
-                                        <Input id="manuscript" type="file" className="bg-gray-700 text-gray-100"/>
-                                    </div>
-                                    <Button>
-                                        <UploadIcon className="mr-2 h-4 w-4"/> Submit Manuscript
-                                    </Button>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-                        <motion.div
-                            className="mt-6"
-                            initial={{opacity: 0, y: 50}}
-                            animate={{opacity: 1, y: 0}}
-                            transition={{duration: 0.5, delay: 0.2}}
-                        >
-                            <Card className="bg-gray-800 shadow-lg">
-                                <CardHeader>
-                                    <CardTitle>Submission Checklist</CardTitle>
-                                    <CardDescription>Ensure you&apos;ve completed all steps before
-                                        submitting.</CardDescription>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Manuscript
+                                        Submission</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="space-y-4">
-                                        {["I have read and agree to the submission guidelines",
-                                            "My submission is original and free from plagiarism",
-                                            "I have used the provided template for formatting"].map((item, index) => (
-                                            <div key={index} className="flex items-center space-x-2">
-                                                <Checkbox id={`check-${index}`}/>
-                                                <label
-                                                    htmlFor={`check-${index}`}
-                                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                                >
-                                                    {item}
-                                                </label>
-                                            </div>
-                                        ))}
+                                    <p className="mb-4 text-gray-300">All submitted technical article (full-paper) will
+                                        be reviewed by the 5th ICDICI 2024 Technical Committee.</p>
+                                    <p className="mb-4 text-gray-300">Early submission is encouraged to ensure that the
+                                        committee members have ample time to review the submitted technical papers.</p>
+                                    <p className="mb-4 text-gray-300">Authors are strongly encouraged to submit their
+                                        full-paper online to the Conference Email: icdici.conf@gmail.com on or before
+                                        the &#34;Full Paper Submission Deadline&#34; mentioned in the conference
+                                        homepage.</p>
+                                </CardContent>
+                            </Card>
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
+                                <CardHeader>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Call For
+                                        Papers</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <h4 className="font-semibold mb-2 text-indigo-300">2025 Call For Papers Now
+                                        Open!</h4>
+                                    <div className="flex flex-wrap gap-4">
+                                        <Button variant="outline"
+                                                className="bg-indigo-600 text-white hover:bg-indigo-700">Conference
+                                            Brochure</Button>
+                                        <Button className="bg-indigo-600 text-white hover:bg-indigo-700">
+                                            <Link href="mailto:icdici.conf@gmail.com"
+                                                  className="text-white no-underline">
+                                                Send your papers to icdici.conf@gmail.com
+                                            </Link>
+                                        </Button>
                                     </div>
                                 </CardContent>
-                                <CardFooter>
-                                    <Button className="w-full">
-                                        <CheckCircleIcon className="mr-2 h-4 w-4"/> Confirm Submission
-                                    </Button>
-                                </CardFooter>
                             </Card>
-                        </motion.div>
-                    </TabsContent>
-                    <TabsContent value="guidelines">
-                        <motion.div
-                            initial={{opacity: 0, y: 20}}
-                            animate={{opacity: 1, y: 0}}
-                            transition={{duration: 0.5}}
-                        >
-                            <Card className="bg-gray-800 shadow-lg">
+                            <Card className="bg-gray-800 shadow-lg border-gray-700">
                                 <CardHeader>
-                                    <CardTitle>Submission Guidelines</CardTitle>
+                                    <CardTitle className="text-indigo-300 text-xl sm:text-2xl">Manuscript
+                                        Templates</CardTitle>
                                 </CardHeader>
-                                <CardContent className="space-y-4">
-                                    <Accordion type="single" collapsible className="w-full">
-                                        <AccordionItem value="item-1" className="border-b-white">
-                                            <AccordionTrigger>Full-Paper Submission</AccordionTrigger>
-                                            <AccordionContent>
-                                                <ul className="list-disc pl-5 space-y-2">
-                                                    {guidelines.submission.map((guideline, index) => (
-                                                        <li key={index}>{guideline}</li>
-                                                    ))}
-                                                </ul>
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                        <AccordionItem value="item-2" className="border-b-white">
-                                            <AccordionTrigger>Full-Paper Content</AccordionTrigger>
-                                            <AccordionContent>
-                                                <p>Your full-paper should contain adequate information for review by the
-                                                    Technical Committee including:</p>
-                                                <ul className="list-disc pl-5 space-y-2 mt-2">
-                                                {guidelines.content.map((item, index) => (
-                                                        <li key={index}><strong>{item.title}:</strong> {item.description}</li>
-                                                    ))}
-                                                </ul>
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                    </Accordion>
+                                <CardContent>
+                                    <p className="mb-4 text-gray-300">To help ensure correct formatting, please use the
+                                        style files, which can be downloaded from the link below as templates for your
+                                        submission. These include LaTeX and Word templates.</p>
+                                    <div className="flex flex-wrap gap-4">
+                                        <Button variant="outline"
+                                                className="bg-gray-700 text-indigo-300 hover:bg-gray-600">
+                                            <DownloadIcon className="mr-2 h-4 w-4"/>MS Word Template
+                                        </Button>
+                                        <Button variant="outline"
+                                                className="bg-gray-700 text-indigo-300 hover:bg-gray-600">
+                                            <DownloadIcon className="mr-2 h-4 w-4"/>LaTeX Template
+                                        </Button>
+                                        <Button variant="outline"
+                                                className="bg-gray-700 text-indigo-300 hover:bg-gray-600">
+                                            <Link href="https://www.ieee.org/conferences/publishing/templates.html"
+                                                  className="text-indigo-300 no-underline">
+                                                IEEE Conference Templates
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                    <p className="mt-4 text-gray-300">Violations of any of the above paper
+                                        specifications may result in rejection of your paper. Please note that the LaTeX
+                                        template does not allow for keywords. If you are using the Latex template, do
+                                        not include keywords in your paper.</p>
                                 </CardContent>
-                            </Card>
-                        </motion.div>
-                    </TabsContent>
-                    <TabsContent value="templates">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <Card className="bg-gray-800 shadow-lg">
-                                <CardHeader>
-                                    <CardTitle>Manuscript Templates</CardTitle>
-                                    <CardDescription>Download the templates for your submission.</CardDescription>
-                                </CardHeader>
-                                <CardContent className="space-y-4 space-x-3">
-                                    <Button variant="outline" className="bg-gray-700 text-gray-100 hover:bg-gray-600">
-                                        <DownloadIcon className="mr-2 h-4 w-4"/> MS Word Template
-                                    </Button>
-                                    <Button variant="outline" className="bg-gray-700 text-gray-100 hover:bg-gray-600">
-                                        <DownloadIcon className="mr-2 h-4 w-4"/> LaTeX Template
-                                    </Button>
-                                </CardContent>
-                                <CardFooter>
-                                    <p className="text-sm">
-                                        Please use these templates to ensure correct formatting of your submission.
-                                    </p>
-                                </CardFooter>
                             </Card>
                         </motion.div>
                     </TabsContent>
                 </Tabs>
             </div>
-        </main>
+        </div>
     )
 }
