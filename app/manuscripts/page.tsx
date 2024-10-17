@@ -269,10 +269,15 @@ export default function ManuscriptSubmission() {
                                     <h4 className="font-semibold mb-2 text-indigo-300">2025 Call For Papers Now
                                         Open!</h4>
                                     <div className="flex flex-wrap gap-4">
-                                        <Button variant="outline"
-                                                className="bg-indigo-600 text-white hover:bg-indigo-700">Conference
-                                            Brochure</Button>
-                                        <Button className="bg-indigo-600 text-white hover:bg-indigo-700">
+                                        <Button
+                                            variant="outline"
+                                            className="bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
+                                        >
+                                            Conference Brochure
+                                        </Button>
+                                        <Button
+                                            className="bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
+                                        >
                                             <Link href="mailto:icdici.conf@gmail.com"
                                                   className="text-white no-underline">
                                                 Send your papers to icdici.conf@gmail.com
@@ -302,7 +307,9 @@ export default function ManuscriptSubmission() {
                                         <Button variant="outline"
                                                 className="bg-gray-700 text-indigo-300 hover:bg-gray-600">
                                             <Link href="https://www.ieee.org/conferences/publishing/templates.html"
-                                                  className="text-indigo-300 no-underline">
+                                                  className="text-indigo-300 no-underline"
+                                                  target={'_blank'}
+                                            >
                                                 IEEE Conference Templates
                                             </Link>
                                         </Button>

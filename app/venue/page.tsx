@@ -70,7 +70,8 @@ export default function VenuePage() {
                                     <a href="https://maps.app.goo.gl/cotK4JZDhHVV3mTw8" className="w-full"
                                        target="_blank" rel="noopener noreferrer">
                                         <Button
-                                            className="bg-indigo-600 text-white hover:bg-indigo-700 w-full sm:mt-4">
+                                            className="w-full bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200 sm:mt-3"
+                                        >
                                             Get Directions
                                         </Button>
                                     </a>

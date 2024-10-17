@@ -77,7 +77,7 @@ export default function KeynoteSpeakersPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    KEYNOTE SPEAKERS
+                    Keynote Speakers
                 </motion.h1>
 
                 <motion.div
