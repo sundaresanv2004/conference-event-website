@@ -6,7 +6,6 @@ import { Mail, Phone, MapPin, Globe, Award, Calendar } from 'lucide-react'
 import { contactInfo } from '@/constants'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import {Navbar} from "@/components/shared";
 
 interface ContactInfo {
     name: string
@@ -78,7 +77,6 @@ const ContactCard: React.FC<{ info: ContactInfo; index: number }> = ({ info, ind
 export default function Contact() {
     return (
         <main>
-            <Navbar />
             <div className="bg-blue_bg py-8 px-4 sm:px-6 lg:px-8 mt-20 sm:mt-24">
                 <motion.div
                     initial={{opacity: 0, y: -50}}

@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Navbar } from "@/components/shared"
 
 const speakers = [
     {
@@ -69,7 +68,6 @@ const SpeakerCard = ({ speaker, index }: { speaker: typeof speakers[0], index: n
 export default function KeynoteSpeakersPage() {
     return (
         <main className="bg-blue_bg">
-            <Navbar />
             <div className="container mx-auto py-12 px-4 mt-16">
                 <motion.h1
                     className="text-4xl sm:text-5xl font-bold text-center mb-12 text-white"

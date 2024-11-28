@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import { motion, useAnimate } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Navbar } from "@/components/shared"
 import { ChevronUp } from "lucide-react"
 import { committeeData } from '@/constants'
 
@@ -111,7 +110,6 @@ export default function ConferenceCommittee() {
 
     return (
         <main className="bg-blue_bg">
-            <Navbar />
             <div className="py-12 px-4 sm:px-6 lg:px-8 mt-20">
                 <div className="max-w-7xl mx-auto">
                     <motion.h1

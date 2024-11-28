@@ -7,12 +7,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
-import { Navbar } from "@/components/shared"
 
 export default function ManuscriptSubmission() {
     return (
         <div className="min-h-screen bg-blue_bg text-gray-100">
-            <Navbar />
             <div className="container mx-auto py-4 sm:py-8 px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 mt-16 sm:mt-20">
                 <motion.header
                     className="mb-6 sm:mb-8"

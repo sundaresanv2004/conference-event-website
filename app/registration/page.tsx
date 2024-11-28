@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { FileTextIcon, CreditCard, Copyright, CheckCircle } from 'lucide-react'
-import { Navbar } from "@/components/shared"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -78,7 +77,6 @@ export default function RegistrationPage() {
 
     return (
         <main className="bg-blue_bg min-h-screen">
-            <Navbar />
             <div className="container mx-auto py-8 px-4 mt-16 sm:py-12 sm:px-6">
                 <motion.h1
                     className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 text-white"

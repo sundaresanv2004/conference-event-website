@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Ubuntu } from 'next/font/google';
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
+import {Navbar} from "@/components/shared";
 
 const ubuntu = Ubuntu({
     subsets: ['latin'],
@@ -30,7 +31,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
       >
-        {children}
+          <Navbar />
+          {children}
       </ThemeProvider>
       </body>
     </html>

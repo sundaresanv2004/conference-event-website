@@ -7,7 +7,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button"
 import { ExternalLinkIcon } from 'lucide-react'
 import Image from 'next/image'
-import { Navbar } from "@/components/shared"
 import {IEEE_Logo} from "@/public/assets/images"
 
 const presentationGuidelines = [
@@ -36,7 +35,6 @@ const presentationGuidelines = [
 export default function PublicationPage() {
     return (
         <main className="bg-blue_bg">
-            <Navbar />
             <div className="container mx-auto py-12 px-4 mt-16">
                 <motion.h1
                     className="text-4xl font-bold text-center mb-12"

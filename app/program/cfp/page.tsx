@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle2 } from 'lucide-react'
-import { Navbar } from "@/components/shared"
 
 const topics = {
     informatics: [
@@ -77,7 +76,6 @@ const TopicCard = ({ topic }: { topic: string }) => (
 export default function CallForPapersPage() {
     return (
         <main className="bg-blue_bg min-h-screen">
-            <Navbar />
             <div className="container mx-auto py-12 px-4 mt-16">
                 <motion.h1
                     className="text-4xl sm:text-5xl font-bold text-center mb-12 text-white"

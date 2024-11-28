@@ -11,13 +11,11 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Navbar } from "@/components/shared"
 import { motion } from 'framer-motion'
 
 export default function VenuePage() {
     return (
         <main className={'bg-blue_bg'}>
-            <Navbar />
             <div className="text-white py-12 px-4 sm:px-6 lg:px-8 mt-20">
                 <div className="max-w-7xl mx-auto">
                     <motion.h1
