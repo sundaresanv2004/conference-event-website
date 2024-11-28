@@ -1,5 +1,5 @@
 import Image from "next/image"
-import {College_Logo, IEEE_Logo, IEEECSL_Logo} from '@/public/assets/images'
+import { IEEE_Logo, IEEECSL_Logo } from '@/public/assets/images'
 
 export default function Sponsors() {
     const sponsors = [

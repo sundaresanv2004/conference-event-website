@@ -64,7 +64,7 @@ export default function DateComponent() {
                 transition={{duration: 0.5, delay: 0.5}}
             >
                 <p className="text-white text-lg">
-                    Mark your calendars and don't miss these important deadlines!
+                    Mark your calendars and don&#39;t miss these important deadlines!
                 </p>
                 <p className="text-indigo-300 mt-2">
                     All deadlines are at 11:59 PM Anywhere on Earth (AoE) time
