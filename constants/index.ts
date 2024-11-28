@@ -20,8 +20,8 @@ export const navLinks = [
         title: "Conference Info",
         subItems: [
             { id: "/#home", title: "Home" },
-            { id: "/conference/registration", title: "Event Registration" },
-            { id: "/conference/publication", title: "Publication" },
+            { id: "/registration", title: "Event Registration" },
+            { id: "/publication", title: "Publication" },
         ],
     },
     {
