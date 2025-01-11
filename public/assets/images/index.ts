@@ -1,8 +1,8 @@
 import College_Logo from './college_logo.svg'
 import IEEE_Logo from './IEEE.png'
 import IEEECSL_Logo from './IEEECSL.png'
-import one_png from './1.jpg'
-import two_png from './2.jpg'
+import one_png from './1.jpeg'
+import two_png from './2.jpeg'
 import three_png from './3.jpg'
 
 export {
