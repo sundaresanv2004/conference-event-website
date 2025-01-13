@@ -29,7 +29,7 @@ export default function ImagesCard({img1, img2, img3}: ImageCardProps) {
 
     return (
         <div className="relative w-full flex items-center justify-center overflow-hidden p-2 sm:p-5">
-            <div className="relative w-full max-w-5xl h-56 sm:h-72 md:h-80 lg:h-96 bg-green-200">
+            <div className="relative w-full max-w-5xl h-56 sm:h-72 md:h-80 lg:h-96">
                 <motion.div
                     variants={imageVariants}
                     initial={{ rotate: 20, zIndex: 1 }}
