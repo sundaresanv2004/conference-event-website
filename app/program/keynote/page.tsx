@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
 
 const speakers = [
     {
@@ -13,19 +14,24 @@ const speakers = [
         affiliation: "University of Haute Alsace, France",
         role: "Technical Committee Chair, IEEE Communication Society",
         image: "/placeholder.svg?height=400&width=400",
-        expertise: ["Communication Systems", "Network Security", "IoT"]
+        expertise: ["Communication Systems", "Network Security", "IoT"],
+        bio: "Prof. Lorenz is a renowned expert in communication systems and network security, with over 20 years of experience in the field."
     },
     {
         name: "Dr. Zubair Baig",
+        title: "Associate Professor",
         affiliation: "Deakin University Geelong, Australia",
         image: "/placeholder.svg?height=400&width=400",
-        expertise: ["Cybersecurity", "AI in Security", "Critical Infrastructure Protection"]
+        expertise: ["Cybersecurity", "AI in Security", "Critical Infrastructure Protection"],
+        bio: "Dr. Baig specializes in cybersecurity and the application of AI in protecting critical infrastructure."
     },
     {
         name: "Dr. Abdelhakim Moutaouakil",
+        title: "Professor",
         affiliation: "Cadi Ayyad University, Marrakech, Morocco",
         image: "/placeholder.svg?height=400&width=400",
-        expertise: ["Optical Communications", "Photonics", "Signal Processing"]
+        expertise: ["Optical Communications", "Photonics", "Signal Processing"],
+        bio: "Dr. Moutaouakil is a leading researcher in optical communications and photonics, with numerous publications in top-tier journals."
     }
 ]
 
@@ -36,30 +42,31 @@ const SpeakerCard = ({ speaker, index }: { speaker: typeof speakers[0], index: n
         transition={{ duration: 0.5, delay: index * 0.2 }}
         className="flex"
     >
-        <Card className="bg-gradient-to-br from-indigo-400 to-indigo-600 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 overflow-hidden">
-            <CardHeader className="relative pb-0">
-                <div className="absolute"></div>
-                <Avatar className="w-24 h-24 border-4 border-white z-10 relative mx-auto">
+        <Card className="bg-white dark:bg-gray-900 shadow-md hover:shadow-lg transition-all duration-300 flex-1 overflow-hidden border-t-4 border-blue-500">
+            <CardHeader className="pb-0">
+                <Avatar className="w-24 h-24 mx-auto mb-4">
                     <AvatarImage src={speaker.image} alt={speaker.name} />
                     <AvatarFallback>{speaker.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
             </CardHeader>
-            <CardContent className="text-center pt-4">
-                <CardTitle className="text-2xl font-bold mb-1 text-white">{speaker.name}</CardTitle>
+            <CardContent className="text-center">
+                <CardTitle className="text-2xl font-bold mb-1 text-gray-800 dark:text-white">{speaker.name}</CardTitle>
                 {speaker.title && (
-                    <CardDescription className="text-indigo-100">{speaker.title}</CardDescription>
+                    <CardDescription className="text-gray-600 dark:text-gray-300">{speaker.title}</CardDescription>
                 )}
-                <p className="text-indigo-50 mt-2 mb-4">{speaker.affiliation}</p>
+                <p className="text-gray-700 dark:text-gray-200 mt-2 mb-2">{speaker.affiliation}</p>
                 {speaker.role && (
-                    <p className="text-sm text-indigo-200 mb-4">{speaker.role}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{speaker.role}</p>
                 )}
-                <div className="flex flex-wrap justify-center gap-2">
+                <Separator className="my-4" />
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
                     {speaker.expertise.map((skill, i) => (
-                        <Badge key={i} variant="secondary" className="bg-indigo-700 text-indigo-100 hover:bg-indigo-600">
+                        <Badge key={i} variant="info">
                             {skill}
                         </Badge>
                     ))}
                 </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{speaker.bio}</p>
             </CardContent>
         </Card>
     </motion.div>
@@ -67,16 +74,24 @@ const SpeakerCard = ({ speaker, index }: { speaker: typeof speakers[0], index: n
 
 export default function KeynoteSpeakersPage() {
     return (
-        <main className="bg-blue_bg">
-            <div className="container mx-auto py-12 px-4 mt-16">
+        <main className="min-h-screen pt-20 sm:pt-24 my-6">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.h1
-                    className="text-4xl sm:text-5xl font-bold text-center mb-12 text-white"
+                    className="text-4xl sm:text-5xl font-bold text-center mb-4 text-gray-900 dark:text-white"
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
                     Keynote Speakers
                 </motion.h1>
+                <motion.p
+                    className="text-xl text-center mb-12 text-gray-600 dark:text-gray-300"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    Learn from industry leaders and visionaries
+                </motion.p>
 
                 <motion.div
                     className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
@@ -92,3 +107,4 @@ export default function KeynoteSpeakersPage() {
         </main>
     )
 }
+

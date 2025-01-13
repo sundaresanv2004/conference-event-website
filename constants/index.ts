@@ -42,25 +42,6 @@ export const navLinks = [
     },
 ];
 
-export const contactInfo = [
-    {
-        name: "Dr. K. Paul Joshua",
-        position: "Assistant Professor",
-        department: "Dept. of CSE",
-        institution: "SCAS",
-        email: "icdici.conf@gmail.com",
-        phone: "+91-96003 68297"
-    },
-    {
-        name: "Dr. K. Paul Joshua",
-        position: "Assistant Professor",
-        department: "Dept. of CSE",
-        institution: "SCAS",
-        email: "icdici.conf@gmail.com",
-        phone: "+91-96003 68297"
-    },
-]
-
 interface CommitteeMember {
     name: string
     title: string

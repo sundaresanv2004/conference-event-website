@@ -2,10 +2,28 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Globe, Award, Calendar } from 'lucide-react'
-import { contactInfo } from '@/constants'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Mail, Phone, MapPin } from 'lucide-react'
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
+
+const contactInfo = [
+    {
+        name: "Dr. K. Paul Joshua",
+        position: "Assistant Professor",
+        department: "Dept. of CSE",
+        institution: "SCAS",
+        email: "icdici.conf@gmail.com",
+        phone: "+91-96003 68297"
+    },
+    {
+        name: "Dr. K. Paul Joshua",
+        position: "Assistant Professor",
+        department: "Dept. of CSE",
+        institution: "SCAS",
+        email: "icdici.conf@gmail.com",
+        phone: "+91-96003 68297"
+    },
+]
 
 interface ContactInfo {
     name: string
@@ -14,84 +32,91 @@ interface ContactInfo {
     institution: string
     email: string
     phone: string
-    image?: string
-    website?: string
-    achievements?: string
-    officeHours?: string
 }
 
-const ContactCard: React.FC<{ info: ContactInfo; index: number }> = ({ info, index }) => (
+const ContactCard: React.FC<{ info: ContactInfo }> = ({ info }) => (
     <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="w-full"
+        whileHover={{ y: -5 }}
+        transition={{ duration: 0 }}
+        className="group relative bg-zinc-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
     >
-        <Card className="h-full bg-gradient-to-br from-indigo-400 to-indigo-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <CardHeader className="flex flex-col sm:flex-row items-center gap-4">
-                <Avatar className="h-16 w-16 border-2 border-white">
-                    <AvatarImage src={info.image} alt={info.name} />
-                    <AvatarFallback className="text-lg font-bold">{info.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                </Avatar>
-                <div className="text-center sm:text-left">
-                    <CardTitle className="text-xl sm:text-2xl">{info.name}</CardTitle>
-                    <p className="text-sm opacity-90">{info.position}</p>
-                </div>
-            </CardHeader>
-            <CardContent className="space-y-3">
-                <p className="flex flex-col sm:flex-row items-center sm:items-start">
-                    <MapPin className="w-5 h-5 mr-2 mb-1 sm:mb-0" />
-                    <span className="text-center sm:text-left">{info.department}, {info.institution}</span>
-                </p>
-                <p className="flex flex-col sm:flex-row items-center sm:items-start">
-                    <Mail className="w-5 h-5 mr-2 mb-1 sm:mb-0" />
-                    <a href={`mailto:${info.email}`} className="hover:underline text-center sm:text-left">{info.email}</a>
-                </p>
-                <p className="flex flex-col sm:flex-row items-center sm:items-start">
-                    <Phone className="w-5 h-5 mr-2 mb-1 sm:mb-0" />
-                    <a href={`tel:${info.phone}`} className="hover:underline text-center sm:text-left">{info.phone}</a>
-                </p>
-                {info.website && (
-                    <p className="flex flex-col sm:flex-row items-center sm:items-start">
-                        <Globe className="w-5 h-5 mr-2 mb-1 sm:mb-0" />
-                        <a href={info.website} target="_blank" rel="noopener noreferrer" className="hover:underline text-center sm:text-left">{info.website}</a>
-                    </p>
-                )}
-                {info.achievements && (
-                    <p className="flex flex-col sm:flex-row items-center sm:items-start">
-                        <Award className="w-5 h-5 mr-2 mb-1 sm:mb-0" />
-                        <span className="text-center sm:text-left">{info.achievements}</span>
-                    </p>
-                )}
-                {info.officeHours && (
-                    <p className="flex flex-col sm:flex-row items-center sm:items-start">
-                        <Calendar className="w-5 h-5 mr-2 mb-1 sm:mb-0" />
-                        <span className="text-center sm:text-left">Office Hours: {info.officeHours}</span>
-                    </p>
-                )}
-            </CardContent>
-        </Card>
+        <div className="flex items-start gap-4">
+            <Avatar className="h-16 w-16 ring-2 ring-primary/10">
+                <AvatarFallback className="text-lg bg-primary/10 text-primary font-semibold">
+                    {info.name.split(' ').map(n => n[0]).join('')}
+                </AvatarFallback>
+            </Avatar>
+            <div className="space-y-1">
+                <h3 className="text-xl font-semibold">{info.name}</h3>
+                <p className="text-sm text-muted-foreground">{info.position}</p>
+                <Badge variant="info" className="mt-1">
+                    {info.department}
+                </Badge>
+            </div>
+        </div>
+
+        <div className="mt-4 space-y-3">
+            <div className="h-px bg-gray-500" />
+            <ContactItem icon={MapPin} content={info.institution} />
+            <ContactItem icon={Mail} content={info.email} href={`mailto:${info.email}`} />
+            <ContactItem icon={Phone} content={info.phone} href={`tel:${info.phone}`} />
+        </div>
+    </motion.div>
+)
+
+const ContactItem: React.FC<{
+    icon: React.ElementType;
+    content: string;
+    href?: string;
+}> = ({ icon: Icon, content, href }) => (
+    <motion.div
+        className="flex items-center gap-3 group/item"
+        whileHover={{ x: 5 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+        <div className="p-2 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 transition-colors">
+            <Icon className="w-4 h-4 text-blue-400" />
+        </div>
+        {href ? (
+            <a
+                href={href}
+                className="text-sm hover:text-primary transition-colors"
+            >
+                {content}
+            </a>
+        ) : (
+            <span className="text-sm">{content}</span>
+        )}
     </motion.div>
 )
 
 export default function Contact() {
     return (
-        <main>
-            <div className="bg-blue_bg py-8 px-4 sm:px-6 lg:px-8 mt-20 sm:mt-24">
+        <main className="min-h-screen pt-20 sm:pt-24 my-6">
+            <div className="container px-4 mx-auto max-w-5xl">
                 <motion.div
-                    initial={{opacity: 0, y: -50}}
-                    animate={{opacity: 1, y: 0}}
-                    transition={{duration: 0.5}}
-                    className="max-w-7xl mx-auto"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center space-y-4 mb-12"
                 >
-                    <h1 className="text-4xl sm:text-5xl font-bold text-center text-white mb-8 sm:mb-16">Contact Us</h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                        {contactInfo.map((info, index) => (
-                            <ContactCard key={index} info={info} index={index}/>
-                        ))}
-                    </div>
+                    <h1 className="text-4xl font-bold sm:text-5xl">
+                        Contact Us
+                    </h1>
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Connect directly with our faculty members for immediate assistance
+                    </p>
                 </motion.div>
+
+                <div className="grid gap-8 md:grid-cols-2">
+                    {contactInfo.map((info, index) => (
+                        <ContactCard key={index} info={info} />
+                    ))}
+                </div>
             </div>
         </main>
     )
 }
+

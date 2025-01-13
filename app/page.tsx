@@ -1,12 +1,11 @@
-import { Hero, Footer, About, Sponsors } from '@/components/shared'
+import { Hero, AboutSection, Sponsors } from '@/components/shared'
 
 export default function Home() {
   return (
-      <main className="overflow-hidden w-full">
+      <>
           <Hero />
-          <About />
+          <AboutSection />
           <Sponsors />
-          <Footer />
-      </main>
+      </>
   );
 }

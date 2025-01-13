@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Ubuntu } from 'next/font/google';
-import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
-import {Navbar} from "@/components/shared";
+import { Navbar, Footer } from "@/components/shared" ;
+import React from "react";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Toaster } from "@/components/ui/toaster"
+
 
 const ubuntu = Ubuntu({
     subsets: ['latin'],
@@ -11,30 +14,26 @@ const ubuntu = Ubuntu({
 });
 
 export const metadata: Metadata = {
-  title: "Conference Website",
-  description: "Sathyabama Institute of Science and Technology",
+    title: "Conference Website",
+    description: "Sathyabama Institute of Science and Technology",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${ubuntu.variable} font-ubuntu antialiased bg-blue_bg`}
-      >
-      <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-      >
-          <Navbar />
-          {children}
-      </ThemeProvider>
-      </body>
-    </html>
-  );
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
+    return (
+        <html lang="en">
+        <body className={`${ubuntu.variable} font-ubuntu antialiased bg-bg_black flex flex-col min-h-screen`}>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+        >
+            <Navbar />
+            <main className="flex-grow">
+                {children}
+            </main>
+            <Footer />
+            <Toaster />
+        </ThemeProvider>
+        </body>
+        </html>
+    );
 }

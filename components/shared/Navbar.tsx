@@ -6,7 +6,7 @@ import { Menu } from 'lucide-react'
 import styles from "@/app/styles"
 import { navLinks } from "@/constants"
 import Image from "next/image"
-import {College_Logo} from "@/public/assets/images"
+import {College_Logo} from "../../public/images"
 import {
     NavigationMenu,
     NavigationMenuContent,

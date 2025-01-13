@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button"
 import { ExternalLinkIcon } from 'lucide-react'
 import Image from 'next/image'
-import {IEEE_Logo} from "@/public/assets/images"
+import {IEEE_Logo} from "../../public/images"
 
 const presentationGuidelines = [
     {

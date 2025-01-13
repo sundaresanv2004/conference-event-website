@@ -1,39 +1,52 @@
-import Image from "next/image"
-import { IEEE_Logo, IEEECSL_Logo } from '@/public/assets/images'
+import Image, {StaticImageData} from 'next/image'
 
-export default function Sponsors() {
-    const sponsors = [
-        // { name: "Sponsor 1", logo: College_Logo },
-        { name: "Sponsor 2", logo: IEEE_Logo },
-        { name: "Sponsor 3", logo: IEEECSL_Logo },
-    ]
-
-    return (
-        <div className={"max-w-7xl mx-auto"}>
-            <section className="w-full py-12 md:py-24 lg:py-24">
-                <div className="container px-4 md:px-6">
-                    <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">Our Sponsors</h2>
-                        <p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                            We&apos;re proud to partner with these amazing companies who make our event possible.
-                        </p>
-                    </div>
-                    <div
-                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-16 items-center justify-items-center">
-                        {sponsors.map((sponsor, index) => (
-                            <div key={index} className="flex items-center justify-center">
-                                <Image
-                                    src={sponsor.logo}
-                                    alt={`${sponsor.name} logo`}
-                                    width={200}
-                                    height={100}
-                                    className="object-contain max-w-full h-auto"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        </div>
-    )
+interface Sponsor {
+  name: string
+  logo: StaticImageData | string
 }
+
+const sponsors: Sponsor[] = [
+  { name: "Transistor", logo: "https://tailwindui.com/plus/img/logos/158x48/transistor-logo-gray-400.svg" },
+  { name: "Reform", logo: "https://tailwindui.com/plus/img/logos/158x48/reform-logo-gray-400.svg" },
+  { name: "Tuple", logo: "https://tailwindui.com/plus/img/logos/158x48/tuple-logo-gray-400.svg" },
+  { name: "SavvyCal", logo: "https://tailwindui.com/plus/img/logos/158x48/savvycal-logo-gray-400.svg" },
+  { name: "Statamic", logo: "https://tailwindui.com/plus/img/logos/158x48/statamic-logo-gray-400.svg" },
+]
+
+interface SponsorsProps {
+  title?: string
+}
+
+const Sponsors = ({ title = "Our Sponsors" }: SponsorsProps) => {
+  return (
+      <section className="py-12 sm:py-24 mb-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <h2 className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl mb-8">
+            {title}
+          </h2>
+          <p className="text-center text-lg font-semibold leading-8 text-gray-300 mb-10">
+            Trusted by the world&#39;s most innovative teams
+          </p>
+          <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+            {sponsors.map((sponsor, index) => (
+                <Image
+                    key={sponsor.name}
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    width={158}
+                    height={48}
+                    className={`col-span-2 max-h-12 w-full object-contain ${
+                        index === 3 ? 'sm:col-start-2 lg:col-span-1' :
+                            index === 4 ? 'col-start-2 sm:col-start-auto lg:col-span-1' :
+                                'lg:col-span-1'
+                    }`}
+                />
+            ))}
+          </div>
+        </div>
+      </section>
+  )
+}
+
+
+export default Sponsors;

@@ -1,45 +1,46 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CheckCircle2 } from 'lucide-react'
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { CheckCircle2, BookOpen, Lightbulb, Blocks } from 'lucide-react'
 
 const topics = {
-    informatics: [
+    INFORMATICS: [
         "Intelligent Information Systems",
         "Data Management and Visualization",
         "Data Mining Techniques",
         "Big Data Intelligence",
         "Information Retrieval Techniques",
         "Image/Video Processing and Analysis",
-        // "Data Integration Techniques", "Web Data Management Techniques", "Big Data Storage and Processing Architectures",
+        "Data Integration Techniques",
+        "Web Data Management Techniques",
+        "Big Data Storage and Processing Architectures",
         "Distributed and Parallel Databases",
-        // "Access Control and Authorization Techniques",
+        "Access Control and Authorization Techniques",
         "Natural Language Processing",
         "Big Data as a Service",
-        // "Data Pre-Processing Techniques", "Multi-Structured Data Processing Techniques",
-        "Computational Modeling and Data Integration Techniques",
-        "Security and Privacy-Preserving Big Data Analytics"
+        "Data Pre-Processing Techniques",
     ],
-    cognitiveIntelligence: [
-        // "Cognitively Inspired Computing and Communications",
+    "COGNITIVE INTELLIGENCE": [
+        "Cognitively Inspired Computing and Communications",
         "Cognitive Foundation in Big Data",
         "Cognitive Robotics",
         "Autonomous Computing Technologies",
         "Cognitive Information Processing Model",
-        // "Cognitive Human-Computer Interaction Techniques",
+        "Cognitive Human-Computer Interaction Techniques",
         "Deep Learning",
         "Data-Driven Fuzzy Systems and Models",
-        // "Cognition based Human-Machine Cooperation", "Cognitive Interferences in Data Processing",
+        "Cognition based Human-Machine Cooperation",
+        "Cognitive Interferences in Data Processing",
         "Cognitive Information Theory",
-        // "Neuro-Computing and Brain-System Interfaces", "Knowledge Processors and Manipulations",
+        "Neuro-Computing and Brain-System Interfaces",
+        "Knowledge Processors and Manipulations",
         "Intelligent Decision Theories and Models",
-        "Distributed Data Intelligence Models",
-        "Cognitive Data Modeling and Mining Techniques"
     ],
-    applications: [
+    APPLICATIONS: [
         "Smart Cities",
         "Healthcare",
         "Process Automation",
@@ -51,11 +52,22 @@ const topics = {
         "Wearable and Personalized Technologies",
         "Smart Virtual Environments",
         "Mobile Technologies and Services",
-        // "E-learning",
+        "E-learning",
         "Gaming Theory",
-        // "Smart User Interfaces",
-        "Multimedia and Video Processing"
-    ]
+    ],
+}
+
+const CategoryIcon = ({ category }: { category: string }) => {
+    switch (category) {
+        case 'INFORMATICS':
+            return <BookOpen className="h-5 w-5" />
+        case 'COGNITIVE INTELLIGENCE':
+            return <Lightbulb className="h-5 w-5" />
+        case 'APPLICATIONS':
+            return <Blocks className="h-5 w-5" />
+        default:
+            return null
+    }
 }
 
 const TopicCard = ({ topic }: { topic: string }) => (
@@ -63,68 +75,83 @@ const TopicCard = ({ topic }: { topic: string }) => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        whileHover={{ scale: 1.01 }}
     >
-        <Card className="mb-2 bg-gray-800 shadow-lg">
-            <CardContent className="p-4 flex items-center">
-                <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
-                <span className="text-gray-100">{topic}</span>
+        <Card className="group transition-all hover:shadow-md hover:border-blue-500/60 bg-gray-800">
+            <CardContent className="p-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors">
+                        <CheckCircle2 className="h-4 w-4 text-green-400" />
+                    </div>
+                    <span className="text-foreground font-medium">{topic}</span>
+                </div>
             </CardContent>
         </Card>
     </motion.div>
 )
 
 export default function CallForPapersPage() {
+    const [activeTab, setActiveTab] = useState("INFORMATICS")
+
     return (
-        <main className="bg-blue_bg min-h-screen">
-            <div className="container mx-auto py-12 px-4 mt-16">
-                <motion.h1
-                    className="text-4xl sm:text-5xl font-bold text-center mb-12 text-white"
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    Call For Paper
-                </motion.h1>
+        <main className="min-h-screen pt-20 sm:pt-24 my-6">
+            <div className="container mx-auto px-4 pb-16">
+                <div className="w-full max-w-5xl mx-auto">
+                    <div className="text-center space-y-4 mb-12">
+                        <h1 className="text-4xl font-bold sm:text-5xl mb-4">
+                            Call For Papers
+                        </h1>
+                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                            Explore our comprehensive range of research topics and areas of interest
+                        </p>
+                    </div>
 
-                <Tabs defaultValue="informatics" className="w-full">
-                    <TabsList className="grid w-full grid-cols-3 mb-6 sm:mb-8 rounded-xl p-1 bg-gray-800">
-                        <TabsTrigger
-                            value="informatics"
-                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
-                        >
-                            Informatics
-                        </TabsTrigger>
-                        <TabsTrigger
-                            value="cognitiveIntelligence"
-                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
-                        >
-                            Cognitive Intelligence
-                        </TabsTrigger>
-                        <TabsTrigger
-                            value="applications"
-                            className="data-[state=active]:bg-indigo-500 data-[state=active]:text-white rounded-lg transition-all duration-300 text-xs sm:text-sm"
-                        >
-                            Applications
-                        </TabsTrigger>
-                    </TabsList>
+                    <div className="md:hidden mb-8">
+                        <Select onValueChange={setActiveTab} defaultValue={activeTab}>
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select a category" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {Object.keys(topics).map((category) => (
+                                    <SelectItem key={category} value={category} className="flex items-center gap-2">
+                                        <div className="flex flex-row items-center gap-2 py-1">
+                                            <CategoryIcon category={category} />
+                                            {category.charAt(0) + category.slice(1).toLowerCase()}
+                                        </div>
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
 
-                    <TabsContent value="informatics">
-                        {topics.informatics.map((topic, index) => (
-                            <TopicCard key={index} topic={topic} />
+                    <Tabs value={activeTab} onValueChange={setActiveTab} className="hidden md:block">
+                        <TabsList className="grid w-full grid-cols-3 mb-8">
+                            {Object.keys(topics).map((category) => (
+                                <TabsTrigger key={category} value={category} className="flex items-center gap-2">
+                                    <CategoryIcon category={category} />
+                                    <span className="hidden sm:inline">{category.charAt(0) + category.slice(1).toLowerCase()}</span>
+                                    <span className="sm:hidden">{category.charAt(0)}</span>
+                                </TabsTrigger>
+                            ))}
+                        </TabsList>
+                    </Tabs>
+
+                    <div className="relative space-y-4">
+                        <div/>
+                        {Object.entries(topics).map(([category, topicList]) => (
+                            <div
+                                key={category}
+                                className={`grid gap-3 transition-all ${activeTab === category ? 'block' : 'hidden'}`}
+                            >
+                                {topicList.map((topic, index) => (
+                                    <TopicCard key={index} topic={topic} />
+                                ))}
+                            </div>
                         ))}
-                    </TabsContent>
-                    <TabsContent value="cognitiveIntelligence">
-                        {topics.cognitiveIntelligence.map((topic, index) => (
-                            <TopicCard key={index} topic={topic} />
-                        ))}
-                    </TabsContent>
-                    <TabsContent value="applications">
-                        {topics.applications.map((topic, index) => (
-                            <TopicCard key={index} topic={topic} />
-                        ))}
-                    </TabsContent>
-                </Tabs>
+                    </div>
+                </div>
             </div>
         </main>
     )
 }
+

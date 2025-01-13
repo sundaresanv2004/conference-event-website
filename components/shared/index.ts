@@ -1,13 +1,13 @@
 import Navbar from './Navbar';
 import Hero from './Hero';
-import About from './About';
-import Sponsors from "@/components/shared/Sponsors";
+import AboutSection from './AboutSection';
+import Sponsors from "./Sponsors";
 import Footer from './Footer';
 
 export {
     Navbar,
     Hero,
-    About,
+    AboutSection,
     Sponsors,
     Footer,
 }
