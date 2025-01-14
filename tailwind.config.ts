@@ -18,17 +18,6 @@ const config: Config = {
 			blue_bg: '#0d1117',
 			dark_blue: '#12141C',
 			bg_black: '#0a0c10',
-			gray: {
-				900: '#121212',
-				800: '#1e1e1e',
-				700: '#2d2d2d',
-				400: '#9e9e9e',
-				300: '#bdbdbd',
-			},
-			blue: {
-				400: '#60a5fa',
-				500: '#3b82f6',
-			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

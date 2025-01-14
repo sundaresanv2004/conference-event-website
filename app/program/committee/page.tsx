@@ -1,195 +1,184 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion, useAnimate } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ChevronUp } from "lucide-react"
-import { committeeData } from '@/constants'
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-interface CommitteeMember {
-    name: string
-    title: string
-    institution: string
+type CommitteeMember = {
+    name: string;
+    title?: string;
+    institution?: string;
+    affiliation?: string;
+    role?: string;
 }
 
-const AnimatedCard = ({ member, index }: { member: CommitteeMember; index: number }) => {
-    const [scope, animate] = useAnimate()
+type CommitteeSection = {
+    title: string;
+    members: CommitteeMember[];
+}
 
-    useEffect(() => {
-        animate(scope.current, { opacity: [0, 1], y: [50, 0] }, { delay: index * 0.1, duration: 0.5 })
-    }, [animate, index, scope])
+const committeeData: CommitteeSection[] = [
+    {
+        title: "Chief Patrons",
+        members: [
+            {
+                name: "Dr. Mariazeena Johnson",
+                title: "CHANCELLOR",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+            {
+                name: "Dr. Marie Johnson",
+                title: "PRESIDENT",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+            {
+                name: "Ms. Maria Catherine Johnson",
+                title: "VICE PRESIDENT",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+        ],
+    },
+    {
+        title: "Patrons",
+        members: [
+            {
+                name: "Dr. T. Sasipraba",
+                title: "VICE CHANCELLOR",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+        ],
+    },
+    {
+        title: "Convenors",
+        members: [
+            {
+                name: "Dr. T. Sasikala",
+                title: "DEAN, SCHOOL OF COMPUTING",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+            {
+                name: "Dr. S. Vigneshwari",
+                title: "HEAD OF THE DEPARTMENT (Specialisation)",
+                institution: "SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            },
+        ],
+    },
+    {
+        title: "Technical Program Chairs",
+        members: [
+            {
+                name: "Dr. Jinsong Wu",
+                affiliation: "University of Chile, Chile.",
+                role: "Big Data Technical Committee Chair, IEEE Communication Society.",
+            },
+            {
+                name: "Pr. Pascal Lorenz",
+                affiliation: "Professor, University of Haute Alsace, France.",
+                role: "Satellite & Space Communications Technical Committee Chair, IEEE Communication Society.",
+            },
+            {
+                name: "Dr. M S Mekala",
+                affiliation: "Robert Gordon University, United Kingdom.",
+                role: "Senior Member IEEE",
+            },
+            {
+                name: "Dr. I. Jeena Jacob",
+                affiliation: "GITAM University, Bangalore, India.",
+            },
+            {
+                name: "Dr. R. Karthik Ganesh",
+                affiliation: "SCAD College of Engineering and Technology, India.",
+            },
+            {
+                name: "Prof. Giovanni Giambene",
+                affiliation: "Professor, Faculty of Engineering, University of Siena, Italy.",
+            },
+        ],
+    },
+    {
+        title: "Technical Program Committee",
+        members: [
+            {
+                name: "Dr. Huaming Wu",
+                affiliation: "Tianjin University, China",
+            },
+            {
+                name: "Dr. Hend Galal Eldeen",
+                affiliation: "Professor, Mohamed Ali Hassan Ain Shams University, Egypt.",
+            },
+            {
+                name: "Dr. Antonio Sarasa",
+                affiliation: "Professor, Cabezuelo Complutense University of Madrid, Spain.",
+            },
+        ],
+    },
+]
+
+const MemberCard = ({ member }: { member: CommitteeMember }) => {
+    return (
+        <div className="group bg-gradient-to-br from-[#1c1f26] to-[#2c3038] p-6 rounded-xl shadow-lg hover:shadow-blue-500/30 hover:scale-105 hover:border-blue-400 transition-all duration-300 border border-blue-500/20">
+            <div className="flex items-start space-x-4">
+                <Avatar className="h-16 w-16 border-2 border-blue-500">
+                    <AvatarImage src={`/placeholder.svg?height=64&width=64`} />
+                    <AvatarFallback className="text-lg font-bold text-white">
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                </Avatar>
+                <div className="flex-grow">
+                    <h3 className="text-lg font-semibold text-white mb-1">{member.name}</h3>
+                    {member.title && <p className="text-sm text-blue-300 mb-1">{member.title}</p>}
+                    {member.institution && <p className="text-sm text-gray-400 mb-1">{member.institution}</p>}
+                    {member.affiliation && <p className="text-sm text-gray-300 mb-1">{member.affiliation}</p>}
+                    {member.role && <p className="text-sm text-blue-400 italic">{member.role}</p>}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const CommitteeSection = ({ section }: { section: CommitteeSection }) => {
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true, margin: "-50px" })
 
     return (
         <motion.div
-            ref={scope}
-            whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)" }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="w-full max-w-sm"
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.2 }}
+            className="mb-12"
         >
-            <Card className="bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-900 border-2 border-indigo-300 shadow-lg overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
-                    <CardTitle className="text-xl font-bold text-center">{member.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 0.3 }}
-                        className="text-center"
-                    >
-                        <p className="text-indigo-700 font-semibold mb-2">{member.title}</p>
-                        <p className="text-sm text-indigo-600">{member.institution}</p>
-                    </motion.div>
-                </CardContent>
-            </Card>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-blue-400 flex items-center">
+                <span className="bg-blue-500 w-2 h-8 mr-3"></span>
+                {section.title}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {section.members.map((member, index) => (
+                    <MemberCard key={index} member={member} />
+                ))}
+            </div>
         </motion.div>
     )
 }
 
-const technicalProgramChairs = [
-    {
-        name: "Dr. Jinsong Wu",
-        affiliation: "University of Chile, Chile.",
-        role: "Big Data Technical Committee Chair, IEEE Communication Society.",
-    },
-    {
-        name: "Pr. Pascal Lorenz",
-        affiliation: "Professor, University of Haute Alsace, France.",
-        role: "Satellite & Space Communications Technical Committee Chair, IEEE Communication Society.",
-    },
-    {
-        name: "Dr. M S Mekala",
-        affiliation: "Robert Gordon University, United Kingdom.",
-        role: "Senior Member IEEE",
-    },
-    {
-        name: "Dr. I. Jeena Jacob",
-        affiliation: "GITAM University, Bangalore, India.",
-    },
-    {
-        name: "Dr. R. Karthik Ganesh",
-        affiliation: "SCAD College of Engineering and Technology, India.",
-    },
-    {
-        name: "Prof. Giovanni Giambene",
-        affiliation: "Professor, Faculty of Engineering, University of Siena, Italy.",
-    },
-]
-
-const technicalProgramCommittee = [
-    {
-        name: "Dr. Huaming Wu",
-        affiliation: "Tianjin University, China",
-    },
-    {
-        name: "Dr. Hend Galal Eldeen",
-        affiliation: "Professor, Mohamed Ali Hassan Ain Shams University, Egypt.",
-    },
-    {
-        name: "Dr. Antonio Sarasa",
-        affiliation: "Professor, Cabezuelo Complutense University of Madrid, Spain.",
-    },
-]
-
 export default function ConferenceCommittee() {
-    const [showBackToTop, setShowBackToTop] = useState(false)
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setShowBackToTop(window.scrollY > 300)
-        }
-
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-
     return (
-        <main className="bg-blue_bg">
-            <div className="py-12 px-4 sm:px-6 lg:px-8 mt-20">
-                <div className="max-w-7xl mx-auto">
-                    <motion.h1
-                        className="text-4xl sm:text-5xl font-extrabold text-center mb-16"
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        Conference Committee
-                    </motion.h1>
+        <div className="min-h-screen pt-20 sm:pt-24 my-6">
+            <motion.h1
+                className="text-4xl md:text-5xl font-bold text-center mb-16 text-white"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                Conference Committee
+            </motion.h1>
 
-                    {committeeData.map((section, sectionIndex) => (
-                        <motion.section
-                            key={section.title}
-                            className="mb-20"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.2 * sectionIndex, duration: 0.5 }}
-                        >
-                            <h2 className="text-3xl font-bold text-center mb-10">{section.title}</h2>
-                            <div className="flex flex-wrap justify-center gap-8">
-                                {section.members.map((member, index) => (
-                                    <AnimatedCard key={index} member={member} index={index} />
-                                ))}
-                            </div>
-                        </motion.section>
-                    ))}
-
-                    <motion.section
-                        className="mb-20"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.8, duration: 0.5 }}
-                    >
-                        <h2 className="text-3xl font-bold text-center mb-10">Technical Program Chairs</h2>
-                        <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-white">
-                            {technicalProgramChairs.map((chair, index) => (
-                                <div key={index} className="mb-4 last:mb-0">
-                                    <p className="font-semibold">{chair.name}</p>
-                                    <p>{chair.affiliation}</p>
-                                    {chair.role && <p className="text-sm italic text-gray-300">{chair.role}</p>}
-                                </div>
-                            ))}
-                        </div>
-                    </motion.section>
-
-                    <motion.section
-                        className="mb-20"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1, duration: 0.5 }}
-                    >
-                        <h2 className="text-3xl font-bold text-center mb-10">Technical Program Committee</h2>
-                        <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-white">
-                            {technicalProgramCommittee.map((member, index) => (
-                                <div key={index} className="mb-4 last:mb-0">
-                                    <p className="font-semibold">{member.name}</p>
-                                    <p>{member.affiliation}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.section>
-                </div>
+            <div className="max-w-7xl mx-auto space-y-16">
+                {committeeData.map((section, index) => (
+                    <CommitteeSection key={index} section={section} />
+                ))}
             </div>
-
-            {showBackToTop && (
-                <motion.div
-                    className="fixed bottom-8 right-8"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                >
-                    <Button
-                        onClick={scrollToTop}
-                        className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-3 shadow-lg"
-                    >
-                        <ChevronUp size={24} />
-                    </Button>
-                </motion.div>
-            )}
-        </main>
+        </div>
     )
 }
+
