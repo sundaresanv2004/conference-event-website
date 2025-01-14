@@ -31,7 +31,7 @@ const VenuePage = () => {
                         animate={{opacity: 1, x: 0}}
                         transition={{duration: 0.5, delay: 0.2}}
                     >
-                        <Card className="bg-white/10 backdrop-blur-lg border-gray-200/20 shadow-xl h-full">
+                        <Card className="bg-gradient-to-br from-[#1c1f26] to-[#2c3038] rounded-xl shadow-lg border-blue-500/20">
                             <CardHeader>
                                 <CardTitle className="text-xl sm:text-2xl font-bold text-white">Sathyabama Centre for Advanced Studies (SCAS)</CardTitle>
                                 <CardDescription className="text-sm sm:text-base text-gray-300">
