@@ -89,7 +89,7 @@ export default function Hero() {
                                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                     <Button
                                         size="lg"
-                                        className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-4 px-8 rounded-full transition duration-300 ease-in-out transform hover:shadow-lg"
+                                        className="bg-gradient-to-r from-blue-300 to-blue-600 hover:from-blue-400 hover:to-blue-800 text-white font-semibold py-4 px-8 rounded-full transition duration-300 ease-in-out transform hover:shadow-lg"
                                     >
                                         Register Now
                                         <ArrowRight className="ml-2 h-5 w-5" />
