@@ -127,7 +127,7 @@ export default function CallForPapersPage() {
                     <Tabs value={activeTab} onValueChange={setActiveTab} className="hidden md:block">
                         <TabsList className="grid w-full grid-cols-3 mb-8">
                             {Object.keys(topics).map((category) => (
-                                <TabsTrigger key={category} value={category} className="flex items-center gap-2">
+                                <TabsTrigger key={category} value={category} className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                                     <CategoryIcon category={category} />
                                     <span className="hidden sm:inline">{category.charAt(0) + category.slice(1).toLowerCase()}</span>
                                     <span className="sm:hidden">{category.charAt(0)}</span>
