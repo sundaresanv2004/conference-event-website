@@ -3,7 +3,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin } from 'lucide-react'
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 
 const contactInfo = [
@@ -42,19 +41,12 @@ const ContactCard: React.FC<{ info: ContactInfo }> = ({ info }) => (
         transition={{ duration: 0 }}
         className="group bg-gradient-to-br from-[#1c1f26] to-[#2c3038] p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-blue-500/30 hover:scale-105 hover:border-blue-400 transition-all duration-300 border border-blue-500/20"
     >
-        <div className="flex items-start gap-3 sm:gap-4">
-            <Avatar className="h-12 w-12 sm:h-16 sm:w-16 ring-2 ring-primary/10 transition-all duration-300 group-hover:ring-primary/30">
-                <AvatarFallback className="text-base sm:text-lg bg-primary/10 text-primary font-semibold">
-                    {info.name.split(' ').map(n => n[0]).join('')}
-                </AvatarFallback>
-            </Avatar>
-            <div className="space-y-0.5 sm:space-y-1">
-                <h3 className="text-lg sm:text-xl font-semibold">{info.name}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">{info.position}</p>
-                <Badge variant="info" className="mt-0.5 sm:mt-1 text-xs sm:text-sm">
-                    {info.department}
-                </Badge>
-            </div>
+        <div className="space-y-1 sm:space-y-2">
+            <h3 className="text-lg sm:text-xl font-semibold">{info.name}</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground">{info.position}</p>
+            <Badge variant="info" className="text-xs sm:text-sm">
+                {info.department}
+            </Badge>
         </div>
 
         <div className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
