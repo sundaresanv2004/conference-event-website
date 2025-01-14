@@ -30,10 +30,10 @@ const importantDates = [
 
 export default function DateComponent() {
     return (
-        <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl w-full space-y-12">
+        <div className="w-full flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            <div className="w-full max-w-7xl space-y-8 sm:space-y-12">
                 <motion.h1
-                    className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center text-white tracking-tight"
+                    className="text-4xl sm:text-5xl font-extrabold text-center text-white tracking-tight"
                     initial={{opacity: 0, y: -50}}
                     animate={{opacity: 1, y: 0}}
                     transition={{duration: 0.5}}

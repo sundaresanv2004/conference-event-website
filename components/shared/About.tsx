@@ -5,17 +5,17 @@ import ImagesCard from "@/components/shared/ImagesCard";
 export default function About() {
     return (
         <div className="text-white max-sm:pl-5">
-            <div className="max-w-7xl mx-auto px-4 py-16 sm:py-24">
+            <div className="max-w-7xl mx-auto px-4 pt-16 sm:pt-24">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
                     <div className="w-full lg:w-2/3 space-y-6">
                         <div className="w-fit relative">
                             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold mb-4">
                                 About the Conference
                             </h1>
-                            <div className="absolute inset-x-20 bottom-0 left-0 bg-gradient-to-r from-transparent via-purple-600 to-transparent h-[2px] w-3/4 blur-sm"/>
-                            <div className="absolute inset-x-20 bottom-0 left-0 bg-gradient-to-r from-transparent via-purple-600 to-transparent h-px w-3/4"/>
-                            <div className="absolute inset-x-60 bottom-0 left-0 bg-gradient-to-r from-transparent via-orange-500 to-transparent h-[5px] w-1/4 blur-sm"/>
-                            <div className="absolute inset-x-60 bottom-0 left-0 bg-gradient-to-r from-transparent via-orange-500 to-transparent h-px w-1/4"/>
+                            <div className="absolute inset-x-20 bottom-0 left-0 bg-gradient-to-r from-transparent via-blue-600 to-transparent h-[2px] w-3/4 blur-sm"/>
+                            <div className="absolute inset-x-20 bottom-0 left-0 bg-gradient-to-r from-transparent via-blue-600 to-transparent h-px w-3/4"/>
+                            <div className="absolute inset-x-60 bottom-0 left-0 bg-gradient-to-r from-transparent via-pink-500 to-transparent h-[5px] w-1/4 blur-sm"/>
+                            <div className="absolute inset-x-60 bottom-0 left-0 bg-gradient-to-r from-transparent via-violet-500 to-transparent h-px w-1/4"/>
                         </div>
                         <p className="text-sm sm:text-md lg:text-lg text-gray-300 leading-relaxed">
                             In this era of big data, data analysis and management is emerging as a significant

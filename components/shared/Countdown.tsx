@@ -77,8 +77,8 @@ const Countdown: React.FC = () => {
   ]
 
   return (
-      <section className="pt-12 px-4 md:px-8 flex items-center justify-center">
-        <div className="max-w-7xl mx-auto">
+      <section className="w-full pt-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+        <div className="w-full max-w-7xl mx-auto">
           <motion.div
               className="text-center space-y-12"
               initial={{ opacity: 0, y: 50 }}
@@ -119,4 +119,3 @@ const Countdown: React.FC = () => {
 }
 
 export default Countdown
-
