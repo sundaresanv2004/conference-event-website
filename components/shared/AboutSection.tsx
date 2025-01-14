@@ -3,6 +3,7 @@
 import React from 'react'
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import Countdown from "@/components/shared/Countdown";
 import DateComponent from "@/components/shared/Dates";
 import About from "@/components/shared/About";
 
@@ -15,6 +16,7 @@ const AboutSection = () => {
             <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <TracingBeam>
                     <div id="about">
+                        <Countdown/>
                         <About/>
                     </div>
                     <div id="importantDates" className="py-9 sm:py-6">
