@@ -33,7 +33,7 @@ export default function ManuscriptSubmission() {
                             <Link href="mailto:icdici.conf@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">
                                 icdici.conf@gmail.com
                             </Link>
-                            {' '} on or before the "Full Paper Submission Deadline" mentioned in the conference homepage.
+                            {' '} on or before the &#34;Full Paper Submission Deadline&#34; mentioned in the conference homepage.
                         </p>
                     </div>
                 </motion.header>
@@ -100,7 +100,7 @@ export default function ManuscriptSubmission() {
                                         <li className="flex items-start gap-2">
                                             <CheckCircle className="h-5 w-5 mt-0.5 text-blue-500" />
                                             <span className="text-gray-700 dark:text-gray-300">
-                                                Prior to full-paper submissions –all author's consent must be obtained
+                                                Prior to full-paper submissions –all author&#39;s consent must be obtained
                                             </span>
                                         </li>
                                         <li className="flex items-start gap-2">
@@ -180,7 +180,7 @@ export default function ManuscriptSubmission() {
                                     <div className="flex items-start gap-2">
                                         <AlertCircle className="h-5 w-5 mt-0.5 text-orange-500" />
                                         <p className="text-gray-700 dark:text-gray-300">
-                                            Your full-paper should not use language that is informal in tone / AI-generated in the title or body text. The use of such terms will be considered as "Indirect Plagiarism" and will result in careful scrutiny by the Technical Committee and may result in rejection from the evaluation process.
+                                            Your full-paper should not use language that is informal in tone / AI-generated in the title or body text. The use of such terms will be considered as &#34;Indirect Plagiarism&#34; and will result in careful scrutiny by the Technical Committee and may result in rejection from the evaluation process.
                                         </p>
                                     </div>
                                 </CardContent>
