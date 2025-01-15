@@ -1,5 +1,5 @@
 import College_Logo from './college_logo.svg'
-import BackgroundImage from './bg1.png'
+import BackgroundImage from './bg1.jpeg'
 import IEEE_Logo from './IEEE.png'
 import IEEECSL_Logo from './IEEECSL.png'
 import one_png from './1.jpeg'

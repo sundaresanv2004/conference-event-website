@@ -68,7 +68,7 @@ const config: Config = {
 			ubuntu: ['var(--font-ubuntu)', ...fontFamily.sans],
 		},
 		backgroundImage: {
-			"hero-img": "url('../public/images/bg1.png')",
+			"hero-img": "url('../public/images/bg1.jpeg')",
 		},
   	}
   },

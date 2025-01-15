@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CheckCircle2, BookOpen, Lightbulb, Blocks } from 'lucide-react'
 
 const topics = {
@@ -106,35 +105,27 @@ export default function CallForPapersPage() {
                         </p>
                     </div>
 
-                    <div className="md:hidden mb-8">
-                        <Select onValueChange={setActiveTab} defaultValue={activeTab}>
-                            <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Select a category" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {Object.keys(topics).map((category) => (
-                                    <SelectItem key={category} value={category} className="flex items-center gap-2">
-                                        <div className="flex flex-row items-center gap-2 py-1">
-                                            <CategoryIcon category={category} />
-                                            {category.charAt(0) + category.slice(1).toLowerCase()}
-                                        </div>
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
-
-                    <Tabs value={activeTab} onValueChange={setActiveTab} className="hidden md:block">
-                        <TabsList className="grid w-full grid-cols-3 mb-8">
+                    <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
+                        <TabsList className="grid w-full grid-cols-3">
                             {Object.keys(topics).map((category) => (
-                                <TabsTrigger key={category} value={category} className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                                <TabsTrigger
+                                    key={category}
+                                    value={category}
+                                    className="flex items-center justify-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                                >
                                     <CategoryIcon category={category} />
                                     <span className="hidden sm:inline">{category.charAt(0) + category.slice(1).toLowerCase()}</span>
-                                    <span className="sm:hidden">{category.charAt(0)}</span>
                                 </TabsTrigger>
                             ))}
                         </TabsList>
                     </Tabs>
+
+                    {/* Active category title for small screens */}
+                    <div className="sm:hidden text-center mb-4">
+                        <h2 className="text-xl font-semibold text-primary">
+                            {activeTab.charAt(0) + activeTab.slice(1).toLowerCase()}
+                        </h2>
+                    </div>
 
                     <div className="relative space-y-4">
                         <div/>

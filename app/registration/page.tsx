@@ -93,16 +93,16 @@ export default function RegistrationPage() {
                         <Tabs defaultValue="guidelines" className="space-y-8">
                             <TabsList className="w-full justify-start bg-gray-800/50 p-1 rounded-lg mb-8 flex flex-wrap">
                                 <TabsTrigger value="guidelines" className="flex-grow data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                                    <FileTextIcon className="mr-2 h-4 w-4" />
-                                    Guidelines
+                                    <FileTextIcon className="h-4 w-4 sm:mr-2" />
+                                    <span className="hidden sm:inline">Guidelines</span>
                                 </TabsTrigger>
                                 <TabsTrigger value="fees" className="flex-grow data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                                    <CreditCard className="mr-2 h-4 w-4" />
-                                    Registration Fees
+                                    <CreditCard className="h-4 w-4 sm:mr-2" />
+                                    <span className="hidden sm:inline">Registration Fees</span>
                                 </TabsTrigger>
                                 <TabsTrigger value="copyright" className="flex-grow data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-                                    <Copyright className="mr-2 h-4 w-4" />
-                                    IEEE Ecopyright
+                                    <Copyright className="h-4 w-4 sm:mr-2" />
+                                    <span className="hidden sm:inline">IEEE Ecopyright</span>
                                 </TabsTrigger>
                             </TabsList>
 
