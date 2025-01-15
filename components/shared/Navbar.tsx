@@ -3,10 +3,9 @@
 import React, { useState, useEffect } from 'react'
 import Link from "next/link"
 import { Menu } from 'lucide-react'
-import styles from "@/app/styles"
 import { navLinks } from "@/constants"
 import Image from "next/image"
-import {College_Logo} from "../../public/images"
+import {College_Logo} from "@/public/images"
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -47,8 +46,8 @@ export default function NavBar() {
 
     return (
         <header className={`w-full fixed top-0 z-50 transition-all duration-300 ease-in-out ${scrolled ? 'backdrop-blur-md' : ''}`}>
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-                <div className={`${styles.boxWidth}`}>
+            <div className={`sm:px-16 px-6 flex justify-center items-center`}>
+                <div className="xl:max-w-[1280px] w-full">
                     <nav className="w-full flex py-5 justify-between items-center">
                         <Link href="/" className="text-white text-xl font-bold flex items-center">
                             <Image

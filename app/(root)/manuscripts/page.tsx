@@ -235,7 +235,7 @@ export default function ManuscriptSubmission() {
                                     <CardContent>
                                         <p className="text-gray-300 mb-4">
                                             There is a choice of 3 different technical categories, all of which have multiple subcategories. Please have a thorough read through all of them and check whether your research scope falls under any one of the topic listed in {' '}
-                                            <Link href="/program/cfp" className="text-purple-400 hover:underline">
+                                            <Link href="/app/(root)/program/cfp" className="text-purple-400 hover:underline">
                                                 Call for Papers
                                             </Link>.
                                         </p>

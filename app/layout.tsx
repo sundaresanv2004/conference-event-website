@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Ubuntu } from 'next/font/google';
 import "./globals.css";
-import { Navbar, Footer } from "@/components/shared" ;
 import React from "react";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toaster"
@@ -26,11 +25,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
             attribute="class"
             defaultTheme="dark"
         >
-            <Navbar />
-            <main className="flex-grow">
-                {children}
-            </main>
-            <Footer />
+            {children}
             <Toaster />
         </ThemeProvider>
         </body>
