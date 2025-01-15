@@ -9,8 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Badge } from "@/components/ui/badge"
-import { Download, FileText, Send, CheckCircle, AlertTriangle, CreditCard, Copyright } from 'lucide-react'
+import { FileText, CheckCircle, AlertTriangle, CreditCard, Copyright } from 'lucide-react'
 import Link from 'next/link'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -78,10 +77,10 @@ export default function RegistrationPage() {
     }
 
     return (
-        <div className="min-h-screen pt-16 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen pt-20 sm:pt-24 my-6 px-4">
             <div className="max-w-7xl mx-auto">
                 <motion.h1
-                    className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 text-blue-400"
+                    className="text-4xl sm:text-5xl font-bold text-center mb-8 sm:mb-12"
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -160,28 +159,50 @@ export default function RegistrationPage() {
                                     <CardDescription className="text-gray-400">Select your registration type and proceed to payment.</CardDescription>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="overflow-x-auto -mx-4 sm:-mx-6 lg:-mx-8">
-                                        <div className="inline-block min-w-full align-middle">
-                                            <Table>
-                                                <TableHeader>
-                                                    <TableRow className="border-b border-gray-700">
-                                                        <TableHead className="py-3 px-4 sm:px-6 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Type</TableHead>
-                                                        <TableHead className="py-3 px-4 sm:px-6 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">IEEE ComSoc Member</TableHead>
-                                                        <TableHead className="py-3 px-4 sm:px-6 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">IEEE Member</TableHead>
-                                                        <TableHead className="py-3 px-4 sm:px-6 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Non IEEE Member</TableHead>
-                                                    </TableRow>
-                                                </TableHeader>
-                                                <TableBody>
-                                                    {registrationFees.map((fee, index) => (
-                                                        <TableRow key={index} className="border-b border-gray-700">
-                                                            <TableCell className="py-4 px-4 sm:px-6 text-sm font-medium text-gray-300">{fee.type}</TableCell>
-                                                            <TableCell className="py-4 px-4 sm:px-6 text-sm text-gray-300">{fee.ieeeComSocMember}</TableCell>
-                                                            <TableCell className="py-4 px-4 sm:px-6 text-sm text-gray-300">{fee.ieeeMember}</TableCell>
-                                                            <TableCell className="py-4 px-4 sm:px-6 text-sm text-gray-300">{fee.nonMember}</TableCell>
+                                    <div className="overflow-x-auto -mx-4">
+                                        <div className="inline-block min-w-full py-2 align-middle">
+                                            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+                                                <Table>
+                                                    <TableHeader>
+                                                        <TableRow className="bg-gray-900/50">
+                                                            <TableHead className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-300 sm:pl-6">Type</TableHead>
+                                                            <TableHead className="px-3 py-3.5 text-left text-sm font-semibold text-gray-300">IEEE ComSoc Member</TableHead>
+                                                            <TableHead className="px-3 py-3.5 text-left text-sm font-semibold text-gray-300">IEEE Member</TableHead>
+                                                            <TableHead className="px-3 py-3.5 text-left text-sm font-semibold text-gray-300">Non IEEE Member</TableHead>
                                                         </TableRow>
-                                                    ))}
-                                                </TableBody>
-                                            </Table>
+                                                    </TableHeader>
+                                                    <TableBody>
+                                                        {registrationFees.map((fee, index) => (
+                                                            <TableRow
+                                                                key={index}
+                                                                className={`
+                                                                    ${index % 2 === 0 ? 'bg-gray-800/50' : 'bg-gray-900/50'}
+                                                                    hover:bg-gray-700/50 transition-colors
+                                                                `}
+                                                            >
+                                                                <TableCell className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-200 sm:pl-6">
+                                                                    {fee.type}
+                                                                </TableCell>
+                                                                <TableCell className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
+                                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900/50 text-blue-200">
+                                                                        {fee.ieeeComSocMember}
+                                                                    </span>
+                                                                </TableCell>
+                                                                <TableCell className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
+                                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900/50 text-blue-200">
+                                                                        {fee.ieeeMember}
+                                                                    </span>
+                                                                </TableCell>
+                                                                <TableCell className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
+                                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900/50 text-blue-200">
+                                                                        {fee.nonMember}
+                                                                    </span>
+                                                                </TableCell>
+                                                            </TableRow>
+                                                        ))}
+                                                    </TableBody>
+                                                </Table>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="mt-8 space-y-6">
