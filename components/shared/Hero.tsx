@@ -4,20 +4,25 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Calendar, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
     return (
         <section className="relative w-full min-h-screen overflow-hidden" id="home">
-            <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-hero-img"
-                style={{
-                    backgroundAttachment: 'fixed',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60"></div>
+            {/* Background Image Container */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/images/bg1.jpeg"
+                    alt="Conference background"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                    sizes="100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60"></div>
+            </div>
 
+            {/* Grid Pattern Overlay */}
             <div className="absolute inset-0">
                 <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <motion.path
@@ -34,9 +39,9 @@ export default function Hero() {
                     </pattern>
                 </defs>
             </div>
-            <div
-                className="relative z-10 mt-6 flex items-center justify-center min-h-screen px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20"
-            >
+
+            {/* Content */}
+            <div className="relative z-10 mt-6 flex items-center justify-center min-h-screen px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
                 <div className="container mx-auto">
                     <motion.div
                         initial={{opacity: 0, y: 20}}
@@ -58,10 +63,10 @@ export default function Hero() {
                             animate={{opacity: 1, y: 0}}
                             transition={{duration: 0.5, delay: 0.4}}
                         >
-                            <p className="text-base md:text-2xl lg:text-3xl font-bold text-white">
+                            <p className="text-md md:text-2xl lg:text-3xl font-bold text-white">
                                 6th International Conference on
                             </p>
-                            <p className="text-base md:text-2xl lg:text-3xl font-bold text-white">
+                            <p className="text-md md:text-2xl lg:text-3xl font-bold text-white">
                                 Data Intelligence and Cognitive Informatics
                             </p>
                         </motion.div>
