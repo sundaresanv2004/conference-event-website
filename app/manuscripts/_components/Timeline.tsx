@@ -6,7 +6,7 @@ interface TimelineProps {
 }
 
 export function Timeline({ children }: TimelineProps) {
-    return <div className="space-y-6">{children}</div>
+    return <div className="space-y-6 md:space-y-8">{children}</div>
 }
 
 interface TimelineItemProps {
@@ -14,7 +14,7 @@ interface TimelineItemProps {
 }
 
 export function TimelineItem({ children }: TimelineItemProps) {
-    return <div className="flex">{children}</div>
+    return <div className="flex flex-col md:flex-row md:items-start">{children}</div>
 }
 
 interface TimelineIconProps {
@@ -23,8 +23,8 @@ interface TimelineIconProps {
 
 export function TimelineIcon({ icon: Icon }: TimelineIconProps) {
     return (
-        <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-50 dark:bg-blue-900 dark:border-gray-900">
-            <Icon className="w-5 h-5 text-blue-500" />
+        <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-gray-800 bg-gray-700 mb-4 md:mb-0 md:mr-4">
+            <Icon className="w-5 h-5 text-blue-400" />
         </div>
     )
 }
@@ -34,6 +34,6 @@ interface TimelineContentProps {
 }
 
 export function TimelineContent({ children }: TimelineContentProps) {
-    return <div className="ml-4 mb-10">{children}</div>
+    return <div className="flex-1">{children}</div>
 }
 
